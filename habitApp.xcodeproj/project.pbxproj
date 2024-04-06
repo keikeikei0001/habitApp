@@ -11,6 +11,10 @@
 		B13B169C2BBD99C500216B6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B169B2BBD99C500216B6F /* ContentView.swift */; };
 		B13B169E2BBD99C700216B6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B13B169D2BBD99C700216B6F /* Assets.xcassets */; };
 		B13B16A12BBD99C700216B6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B13B16A02BBD99C700216B6F /* Preview Assets.xcassets */; };
+		B13B16A82BBD9EFA00216B6F /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16A72BBD9EFA00216B6F /* TaskListView.swift */; };
+		B13B16AA2BBDA88200216B6F /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16A92BBDA88200216B6F /* TaskData.swift */; };
+		B13B16AE2BBDABE100216B6F /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16AD2BBDABE100216B6F /* CharacterData.swift */; };
+		B13B16B12BBDAD0A00216B6F /* LevelUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16B02BBDAD0A00216B6F /* LevelUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		B13B169B2BBD99C500216B6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B13B169D2BBD99C700216B6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B13B16A02BBD99C700216B6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B13B16A72BBD9EFA00216B6F /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		B13B16A92BBDA88200216B6F /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
+		B13B16AD2BBDABE100216B6F /* CharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
+		B13B16B02BBDAD0A00216B6F /* LevelUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +60,9 @@
 			isa = PBXGroup;
 			children = (
 				B13B16992BBD99C500216B6F /* habitAppApp.swift */,
-				B13B169B2BBD99C500216B6F /* ContentView.swift */,
+				B13B16AC2BBDAA3300216B6F /* View */,
+				B13B16AB2BBDAA1700216B6F /* Model */,
+				B13B16AF2BBDAC8800216B6F /* Util */,
 				B13B169D2BBD99C700216B6F /* Assets.xcassets */,
 				B13B169F2BBD99C700216B6F /* Preview Content */,
 			);
@@ -65,6 +75,33 @@
 				B13B16A02BBD99C700216B6F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B13B16AB2BBDAA1700216B6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B13B16A92BBDA88200216B6F /* TaskData.swift */,
+				B13B16AD2BBDABE100216B6F /* CharacterData.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B13B16AC2BBDAA3300216B6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B13B169B2BBD99C500216B6F /* ContentView.swift */,
+				B13B16A72BBD9EFA00216B6F /* TaskListView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		B13B16AF2BBDAC8800216B6F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B13B16B02BBDAD0A00216B6F /* LevelUtil.swift */,
+			);
+			name = Util;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +176,10 @@
 			files = (
 				B13B169C2BBD99C500216B6F /* ContentView.swift in Sources */,
 				B13B169A2BBD99C500216B6F /* habitAppApp.swift in Sources */,
+				B13B16AE2BBDABE100216B6F /* CharacterData.swift in Sources */,
+				B13B16AA2BBDA88200216B6F /* TaskData.swift in Sources */,
+				B13B16B12BBDAD0A00216B6F /* LevelUtil.swift in Sources */,
+				B13B16A82BBD9EFA00216B6F /* TaskListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,13 +9,67 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            VStack {
+                Header()
+                    .padding()
+                Spacer()
+                Main()
+                Spacer()
+                Footer()
+            }
+            .padding()
         }
-        .padding()
+    }
+}
+
+struct Header: View {
+    var level = 1
+    var body: some View{
+        HStack {
+            Text("クマネコ")
+                .padding()
+            Spacer()
+                .frame(width: 110)
+            Text("Lv." + String(level))
+                .padding()
+        }
+    }
+}
+
+
+struct Main: View {
+    var body: some View{
+        Image("kumaneko")
+            .resizable()
+            .scaledToFit()
+            .frame(width: UIScreen.main.bounds.width/2)
+    }
+}
+
+struct Footer: View {
+    var body: some View{
+            Button {
+                
+            } label: {
+                NavigationLink(destination: TaskListView().navigationTitle("TASK")){
+                    Text("TASK")
+                        .modifier(ModifierCustom(color: .blue))
+                    
+                }
+            }
+    }
+}
+    
+struct ModifierCustom: ViewModifier {
+    let color: Color
+    func body(content: Content) -> some View {
+        content
+            .frame(width: UIScreen.main.bounds.width/2.3, height: 80)
+                .background(color)
+                .foregroundColor(.white)
+                .font(.system(size: 25, design: .default))
+                .cornerRadius(10)
     }
 }
 
