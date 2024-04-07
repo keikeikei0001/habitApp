@@ -7,26 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B13B169A2BBD99C500216B6F /* habitAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16992BBD99C500216B6F /* habitAppApp.swift */; };
-		B13B169C2BBD99C500216B6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B169B2BBD99C500216B6F /* ContentView.swift */; };
-		B13B169E2BBD99C700216B6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B13B169D2BBD99C700216B6F /* Assets.xcassets */; };
-		B13B16A12BBD99C700216B6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B13B16A02BBD99C700216B6F /* Preview Assets.xcassets */; };
-		B13B16A82BBD9EFA00216B6F /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16A72BBD9EFA00216B6F /* TaskListView.swift */; };
-		B13B16AA2BBDA88200216B6F /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16A92BBDA88200216B6F /* TaskData.swift */; };
-		B13B16AE2BBDABE100216B6F /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16AD2BBDABE100216B6F /* CharacterData.swift */; };
-		B13B16B12BBDAD0A00216B6F /* LevelUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16B02BBDAD0A00216B6F /* LevelUtil.swift */; };
+		B13B16BE2BC254AE00216B6F /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16B42BC254AE00216B6F /* TaskListView.swift */; };
+		B13B16BF2BC254AE00216B6F /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16B52BC254AE00216B6F /* DateUtil.swift */; };
+		B13B16C02BC254AE00216B6F /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16B62BC254AE00216B6F /* CharacterData.swift */; };
+		B13B16C12BC254AE00216B6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B13B16B72BC254AE00216B6F /* Assets.xcassets */; };
+		B13B16C22BC254AE00216B6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B13B16B92BC254AE00216B6F /* Preview Assets.xcassets */; };
+		B13B16C32BC254AE00216B6F /* habitAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BA2BC254AE00216B6F /* habitAppApp.swift */; };
+		B13B16C42BC254AE00216B6F /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BB2BC254AE00216B6F /* TaskManager.swift */; };
+		B13B16C52BC254AE00216B6F /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BC2BC254AE00216B6F /* TaskData.swift */; };
+		B13B16C62BC254AE00216B6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BD2BC254AE00216B6F /* ContentView.swift */; };
+		B13B16CA2BC261A000216B6F /* TaskAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16C92BC261A000216B6F /* TaskAddView.swift */; };
+		B13B16CC2BC26E4000216B6F /* TaskCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16CB2BC26E4000216B6F /* TaskCountView.swift */; };
+		B13B16CE2BC275FB00216B6F /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16CD2BC275FB00216B6F /* CustomModifier.swift */; };
+		B13B16D02BC2B0DD00216B6F /* CharacterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16CF2BC2B0DD00216B6F /* CharacterManager.swift */; };
+		B13B16D22BC2B92C00216B6F /* CharacterUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16D12BC2B92C00216B6F /* CharacterUtil.swift */; };
+		B13B16D52BC2BD2D00216B6F /* ObservalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16D42BC2BD2D00216B6F /* ObservalObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B13B16962BBD99C500216B6F /* habitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = habitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B13B16992BBD99C500216B6F /* habitAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = habitAppApp.swift; sourceTree = "<group>"; };
-		B13B169B2BBD99C500216B6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B13B169D2BBD99C700216B6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B13B16A02BBD99C700216B6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B13B16A72BBD9EFA00216B6F /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
-		B13B16A92BBDA88200216B6F /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
-		B13B16AD2BBDABE100216B6F /* CharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
-		B13B16B02BBDAD0A00216B6F /* LevelUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUtil.swift; sourceTree = "<group>"; };
+		B13B16B42BC254AE00216B6F /* TaskListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		B13B16B52BC254AE00216B6F /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		B13B16B62BC254AE00216B6F /* CharacterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
+		B13B16B72BC254AE00216B6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B13B16B92BC254AE00216B6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B13B16BA2BC254AE00216B6F /* habitAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = habitAppApp.swift; sourceTree = "<group>"; };
+		B13B16BB2BC254AE00216B6F /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		B13B16BC2BC254AE00216B6F /* TaskData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
+		B13B16BD2BC254AE00216B6F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B13B16C92BC261A000216B6F /* TaskAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAddView.swift; sourceTree = "<group>"; };
+		B13B16CB2BC26E4000216B6F /* TaskCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCountView.swift; sourceTree = "<group>"; };
+		B13B16CD2BC275FB00216B6F /* CustomModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
+		B13B16CF2BC2B0DD00216B6F /* CharacterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterManager.swift; sourceTree = "<group>"; };
+		B13B16D12BC2B92C00216B6F /* CharacterUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUtil.swift; sourceTree = "<group>"; };
+		B13B16D42BC2BD2D00216B6F /* ObservalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservalObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +57,7 @@
 		B13B168D2BBD99C500216B6F = {
 			isa = PBXGroup;
 			children = (
-				B13B16982BBD99C500216B6F /* habitApp */,
+				B13B16B32BC254AE00216B6F /* habitApp */,
 				B13B16972BBD99C500216B6F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,52 +70,58 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B13B16982BBD99C500216B6F /* habitApp */ = {
+		B13B16B32BC254AE00216B6F /* habitApp */ = {
 			isa = PBXGroup;
 			children = (
-				B13B16992BBD99C500216B6F /* habitAppApp.swift */,
-				B13B16AC2BBDAA3300216B6F /* View */,
-				B13B16AB2BBDAA1700216B6F /* Model */,
-				B13B16AF2BBDAC8800216B6F /* Util */,
-				B13B169D2BBD99C700216B6F /* Assets.xcassets */,
-				B13B169F2BBD99C700216B6F /* Preview Content */,
+				B13B16BA2BC254AE00216B6F /* habitAppApp.swift */,
+				B13B16D32BC2BB7600216B6F /* Util */,
+				B13B16C82BC2557700216B6F /* View */,
+				B13B16C72BC2552100216B6F /* Model */,
+				B13B16B72BC254AE00216B6F /* Assets.xcassets */,
+				B13B16B82BC254AE00216B6F /* Preview Content */,
 			);
 			path = habitApp;
 			sourceTree = "<group>";
 		};
-		B13B169F2BBD99C700216B6F /* Preview Content */ = {
+		B13B16B82BC254AE00216B6F /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				B13B16A02BBD99C700216B6F /* Preview Assets.xcassets */,
+				B13B16B92BC254AE00216B6F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B13B16AB2BBDAA1700216B6F /* Model */ = {
+		B13B16C72BC2552100216B6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B13B16A92BBDA88200216B6F /* TaskData.swift */,
-				B13B16AD2BBDABE100216B6F /* CharacterData.swift */,
+				B13B16BB2BC254AE00216B6F /* TaskManager.swift */,
+				B13B16CF2BC2B0DD00216B6F /* CharacterManager.swift */,
+				B13B16B62BC254AE00216B6F /* CharacterData.swift */,
+				B13B16BC2BC254AE00216B6F /* TaskData.swift */,
+				B13B16CD2BC275FB00216B6F /* CustomModifier.swift */,
+				B13B16D42BC2BD2D00216B6F /* ObservalObject.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		B13B16AC2BBDAA3300216B6F /* View */ = {
+		B13B16C82BC2557700216B6F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B13B169B2BBD99C500216B6F /* ContentView.swift */,
-				B13B16A72BBD9EFA00216B6F /* TaskListView.swift */,
+				B13B16BD2BC254AE00216B6F /* ContentView.swift */,
+				B13B16B42BC254AE00216B6F /* TaskListView.swift */,
+				B13B16C92BC261A000216B6F /* TaskAddView.swift */,
+				B13B16CB2BC26E4000216B6F /* TaskCountView.swift */,
 			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
-		B13B16AF2BBDAC8800216B6F /* Util */ = {
+		B13B16D32BC2BB7600216B6F /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				B13B16B02BBDAD0A00216B6F /* LevelUtil.swift */,
+				B13B16B52BC254AE00216B6F /* DateUtil.swift */,
+				B13B16D12BC2B92C00216B6F /* CharacterUtil.swift */,
 			);
-			name = Util;
-			path = ..;
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,8 +182,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B13B16A12BBD99C700216B6F /* Preview Assets.xcassets in Resources */,
-				B13B169E2BBD99C700216B6F /* Assets.xcassets in Resources */,
+				B13B16C22BC254AE00216B6F /* Preview Assets.xcassets in Resources */,
+				B13B16C12BC254AE00216B6F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,12 +194,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B13B169C2BBD99C500216B6F /* ContentView.swift in Sources */,
-				B13B169A2BBD99C500216B6F /* habitAppApp.swift in Sources */,
-				B13B16AE2BBDABE100216B6F /* CharacterData.swift in Sources */,
-				B13B16AA2BBDA88200216B6F /* TaskData.swift in Sources */,
-				B13B16B12BBDAD0A00216B6F /* LevelUtil.swift in Sources */,
-				B13B16A82BBD9EFA00216B6F /* TaskListView.swift in Sources */,
+				B13B16C32BC254AE00216B6F /* habitAppApp.swift in Sources */,
+				B13B16BE2BC254AE00216B6F /* TaskListView.swift in Sources */,
+				B13B16C52BC254AE00216B6F /* TaskData.swift in Sources */,
+				B13B16CA2BC261A000216B6F /* TaskAddView.swift in Sources */,
+				B13B16C42BC254AE00216B6F /* TaskManager.swift in Sources */,
+				B13B16D22BC2B92C00216B6F /* CharacterUtil.swift in Sources */,
+				B13B16CE2BC275FB00216B6F /* CustomModifier.swift in Sources */,
+				B13B16C62BC254AE00216B6F /* ContentView.swift in Sources */,
+				B13B16D52BC2BD2D00216B6F /* ObservalObject.swift in Sources */,
+				B13B16D02BC2B0DD00216B6F /* CharacterManager.swift in Sources */,
+				B13B16BF2BC254AE00216B6F /* DateUtil.swift in Sources */,
+				B13B16C02BC254AE00216B6F /* CharacterData.swift in Sources */,
+				B13B16CC2BC26E4000216B6F /* TaskCountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

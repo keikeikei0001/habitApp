@@ -8,7 +8,12 @@ import Foundation
 
 //タスク情報
 struct TaskData: Codable {
+    //タスクID
     var taskId = UUID()
-    var taskTitle: String
+    //タスク名
+    var taskName: String
+    //継続回数
     var continationCount: Int = 0
+    //最終完了日
+    var lastDoneDate:Date = Date().zeroclock
 }

@@ -8,6 +8,7 @@ import Foundation
 
 //キャラクター情報
 struct CharacterData: Codable {
-    var experiencePoint:Int = 0
+    //総保有経験値
+    var allExperiencePoint:Int = 0
 }
 

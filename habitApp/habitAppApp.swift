@@ -12,6 +12,10 @@ struct habitAppApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(TaskObject())
+                .environmentObject(CharacterObject())
         }
     }
 }
+
+

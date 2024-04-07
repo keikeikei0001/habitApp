@@ -29,7 +29,9 @@ struct ContentView: View {
 
 //メイン画面ヘッダー部分
 struct ContentHeader: View {
-    var level = 1
+    @EnvironmentObject var characterObject: CharacterObject
+    //キャラクター情報管理クラス
+    private let characterManager = CharacterManager()
     var body: some View{
         HStack {
             //キャラ名
@@ -38,10 +40,16 @@ struct ContentHeader: View {
                 .padding()
             Spacer()
                 .frame(width: 110)
-            //キャラクターのレベル
-            Text("Lv." + String(level))
-                .font(.system(size: 25))
-                .padding()
+            VStack {
+                //キャラクターのレベル
+                Text("Lv." + String(levelSet(allExperiencePoint: characterObject.characterData.allExperiencePoint)))
+                    .font(.system(size: 25))
+                    .padding()
+            }
+        }
+        .onAppear(){
+            //タスク情報を取得し、taskObjectに渡す
+            characterObject.characterData = characterManager.loadTask(forKey: "characterData")
         }
     }
 }
@@ -59,8 +67,9 @@ struct ContentMain: View {
 
 //メイン画面のフッターの部分
 struct ContentFooter: View {
-    let taskManager = TaskManager()
     @EnvironmentObject var taskObject: TaskObject
+    //タスク情報管理クラス
+    private let taskManager = TaskManager()
     var body: some View{
             //タスク画面遷移ボタン
             Button {
@@ -69,11 +78,11 @@ struct ContentFooter: View {
                     Text("Task")
                         .modifier(CustomModifier(color: .blue))
                         .padding()
-                        .onAppear(){
-                            //タスク情報を取得し、taskObjectに渡す
-                            taskObject.taskData = taskManager.loadTask(forKey: "taskData") ?? []
                 }
             }
+            .onAppear(){
+                //タスク情報を取得し、taskObjectに渡す
+                taskObject.taskData = taskManager.loadTask(forKey: "taskData") ?? []
         }
     }
 }
