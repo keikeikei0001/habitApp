@@ -28,10 +28,12 @@ struct Header: View {
     var body: some View{
         HStack {
             Text("クマネコ")
+                .font(.system(size: 25))
                 .padding()
             Spacer()
                 .frame(width: 110)
             Text("Lv." + String(level))
+                .font(.system(size: 25))
                 .padding()
         }
     }
