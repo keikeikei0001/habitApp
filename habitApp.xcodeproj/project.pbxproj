@@ -27,7 +27,6 @@
 		B13B16A92BBDA88200216B6F /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
 		B13B16AD2BBDABE100216B6F /* CharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
 		B13B16B02BBDAD0A00216B6F /* LevelUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUtil.swift; sourceTree = "<group>"; };
-		B13B16B22BC1744700216B6F /* .gitignore.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = .gitignore.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +43,6 @@
 		B13B168D2BBD99C500216B6F = {
 			isa = PBXGroup;
 			children = (
-				B13B16B22BC1744700216B6F /* .gitignore.md */,
 				B13B16982BBD99C500216B6F /* habitApp */,
 				B13B16972BBD99C500216B6F /* Products */,
 			);
