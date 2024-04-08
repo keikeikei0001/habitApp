@@ -15,14 +15,8 @@ struct TaskListView: View {
     @State var isTaskAddView = false
     
     var body: some View {
-        List {
-            ForEach (Array(taskObject.taskData.enumerated()), id: \.element.taskId) { index, task in
-                NavigationLink(destination: TaskCountView(index: index) ) {
-                    //タスクテーブルセル
-                    TaskTableCellView(index: index)
-                }
-            }
-        }
+        //タスクテーブル
+        TaskTableView()
         .toolbar {
             // ナビゲーションバーの右側に＋ボタンを配置
             // ボタン押下時、TaskAddViewに遷移する
@@ -34,6 +28,19 @@ struct TaskListView: View {
                 }
                 .sheet(isPresented: $isTaskAddView) {
                     TaskAddView( isTaskAddView: $isTaskAddView)
+                }
+            }
+        }
+    }
+    
+    //タスクテーブル
+    @ViewBuilder
+    private func TaskTableView() -> some View {
+        List {
+            ForEach (Array(taskObject.taskData.enumerated()), id: \.element.taskId) { index, task in
+                NavigationLink(destination: TaskCountView(index: index) ) {
+                    //タスクテーブルセル
+                    TaskTableCellView(index: index)
                 }
             }
         }

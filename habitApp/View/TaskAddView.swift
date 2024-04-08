@@ -11,49 +11,56 @@ import SwiftUI
 struct TaskAddView: View {
     //モーダル遷移フラグ
     @Binding var isTaskAddView: Bool
-    
-    var body: some View {
-        VStack {
-            Spacer()
-            TaskAddMain(isTaskAddView: $isTaskAddView)
-            Spacer()
-        }
-    }
-}
-
-//画面のメイン部分
-struct TaskAddMain: View {
     //テキストフィールドの入力値
     @State var inputTaskName = ""
-    //モーダル遷移フラグ
-    @Binding var isTaskAddView: Bool
     //テキストフィールドにフォーカスの有無
     @FocusState var isFocused: Bool
     //タスク情報
     @EnvironmentObject var taskObject: TaskObject
     //タスク管理クラス
-    let taskManager = TaskManager()
+    private let taskManager = TaskManager()
     
     var body: some View {
+        VStack {
+            Spacer()
+            //タスク名入力用テキストフィールド
+            TaskTextFieldView()
+            Spacer()
+            //タスク追加ボタン
+            TaskAddButtonView()
+            Spacer()
+        }
+    }
+    //タスク名入力用テキストフィールド
+    @ViewBuilder
+    private func TaskTextFieldView() ->some View {
         VStack {
             //画面.タスク入力テキストフィールド
             TextField("タスク名を入力してください", text: $inputTaskName)
                 .textFieldStyle(.roundedBorder)
                 .padding()
                 .focused($isFocused)
-            Spacer()
-            Button {
-                //タスク追加ボタン押下時メソッド
-                taskAdd()
-            }label: {
-                Text("Create")
-                    .modifier(CustomModifier(color: .blue))
-            }
+        }
+    }
+    //タスク追加ボタン
+    @ViewBuilder
+    private func TaskAddButtonView() ->some View {
+        Button {
+            //タスク追加ボタン押下時メソッド
+            taskAdd()
+        }label: {
+            Text("Create")
+                .padding(.horizontal, 50)
+                .padding(.vertical)
+                .background(.blue)
+                .foregroundStyle(.white)
+                .font(.title)
+                .cornerRadius(10)
         }
     }
     
     //タスク追加ボタン押下時
-    func taskAdd() {
+    private func taskAdd() {
         //テキストフィールドへのフォーカス解除
         isFocused = false
         //タスク情報取得
