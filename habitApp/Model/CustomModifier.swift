@@ -12,7 +12,8 @@ struct CustomModifier: ViewModifier {
     let color: Color
     func body(content: Content) -> some View {
         content
-            .frame(width: UIScreen.main.bounds.width/2.3, height: 80)
+            .padding(.horizontal, 50)
+            .padding(.vertical)
             .background(color)
             .foregroundColor(.white)
             .font(.system(size: 25, design: .default))

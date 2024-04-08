@@ -28,36 +28,36 @@ struct TaskCountView: View {
     
     var body: some View {
         VStack {
-        Spacer()
-        //画面.タスク名
-        Text(taskObject.taskData[index].taskName)
-        Spacer()
-        //画面.継続回数
-        Text("\(taskObject.taskData[index].continationCount)")
-        Spacer()
-        //タスク完了ボタン
-        Button {
-            //タスク完了時処理
-            taskDone()
-        } label: {
-            if (buttonEnable) {
-                //ボタンが活性状態なら色を青にする
-                Text("Done")
-                .modifier(CustomModifier(color: .blue))
-            } else {
-                //非活性なら色をグレーにする
-                Text("Done")
-                .modifier(CustomModifier(color: .gray))
+            Spacer()
+            //画面.タスク名
+            Text(taskObject.taskData[index].taskName)
+            Spacer()
+            //画面.継続回数
+            Text("\(taskObject.taskData[index].continationCount)")
+            Spacer()
+            //タスク完了ボタン
+            Button {
+                //タスク完了時処理
+                taskDone()
+            } label: {
+                if (buttonEnable) {
+                    //ボタンが活性状態なら色を青にする
+                    Text("Done")
+                        .modifier(CustomModifier(color: .blue))
+                } else {
+                    //非活性なら色をグレーにする
+                    Text("Done")
+                        .modifier(CustomModifier(color: .gray))
+                }
             }
-        }
-        .disabled(!buttonEnable)
-        Spacer()
+            .disabled(!buttonEnable)
+            Spacer()
                 .onAppear() {
                     //タスクを1回でも行い、タスク情報.最終完了日が今日の場合、タスク完了ボタンを非活性にする
                     if (taskObject.taskData[index].lastDoneDate == now && taskObject.taskData[index].continationCount != 0) {
                         buttonEnable = false
+                    }
                 }
-            }
         }
         .toolbar {
             // ナビゲーションバーの右側にdeleteボタンを配置
@@ -70,7 +70,7 @@ struct TaskCountView: View {
             }
         }
     }
-        
+    
     //タスク完了時の処理
     func taskDone() {
         //タスク情報.継続回数に１を足す
@@ -90,9 +90,11 @@ struct TaskCountView: View {
         //遷移元に戻る
         dismiss()
         //対象タスクを削除
-        taskObject.taskData.remove(at: index)
+        var task = taskManager.loadTask(forKey: "taskData") ?? []
+        //対象タスクを削除
+        task.remove(at: index)
         //タスク情報を保存
-        taskManager.saveTask(taskArray: taskObject.taskData, forKey: "taskData")
+        taskManager.saveTask(taskArray: task, forKey: "taskData")
     }
 }
 
