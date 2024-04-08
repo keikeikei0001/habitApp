@@ -66,7 +66,6 @@ struct ContentView: View {
         //タスク画面遷移ボタン
         NavigationLink(destination: TaskListView()){
             Text("Task")
-                .modifier(CustomModifier(color: .blue))
                 .padding(.horizontal, 50)
                 .padding(.vertical)
                 .background(.blue)
