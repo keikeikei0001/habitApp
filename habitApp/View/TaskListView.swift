@@ -9,6 +9,7 @@ import SwiftUI
 
 //タスクリスト画面
 struct TaskListView: View {
+    //タスク情報
     @EnvironmentObject var taskObject: TaskObject
     //モーダル遷移フラグ
     @State var isTaskAddView = false
@@ -18,7 +19,7 @@ struct TaskListView: View {
             ForEach (Array(taskObject.taskData.enumerated()), id: \.element.taskId) { index, task in
                 NavigationLink(destination: TaskCountView(index: index) ) {
                     //タスクテーブルセル
-                    TaskTableCell(index: index)
+                    TaskTableCellView(index: index)
                 }
             }
         }
@@ -37,14 +38,10 @@ struct TaskListView: View {
             }
         }
     }
-}
-
-//タスクのテーブルセル
-struct TaskTableCell: View {
-    @EnvironmentObject var taskObject: TaskObject
-    //対象タスクのインデックス
-    var index: Int
-    var body: some View{
+    
+    //タスクのテーブルセル
+    @ViewBuilder
+    private func TaskTableCellView(index: Int) -> some View {
         HStack {
             //タスク情報.タスク名
             Text(taskObject.taskData[index].taskName)
