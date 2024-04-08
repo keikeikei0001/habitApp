@@ -22,6 +22,7 @@
 		B13B16D02BC2B0DD00216B6F /* CharacterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16CF2BC2B0DD00216B6F /* CharacterManager.swift */; };
 		B13B16D22BC2B92C00216B6F /* CharacterUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16D12BC2B92C00216B6F /* CharacterUtil.swift */; };
 		B13B16D52BC2BD2D00216B6F /* ObservalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16D42BC2BD2D00216B6F /* ObservalObject.swift */; };
+		B13B16D92BC4227800216B6F /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16D82BC4227800216B6F /* DeviceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		B13B16CF2BC2B0DD00216B6F /* CharacterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterManager.swift; sourceTree = "<group>"; };
 		B13B16D12BC2B92C00216B6F /* CharacterUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUtil.swift; sourceTree = "<group>"; };
 		B13B16D42BC2BD2D00216B6F /* ObservalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservalObject.swift; sourceTree = "<group>"; };
+		B13B16D82BC4227800216B6F /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				B13B16BC2BC254AE00216B6F /* TaskData.swift */,
 				B13B16CD2BC275FB00216B6F /* CustomModifier.swift */,
 				B13B16D42BC2BD2D00216B6F /* ObservalObject.swift */,
+				B13B16D82BC4227800216B6F /* DeviceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				B13B16CE2BC275FB00216B6F /* CustomModifier.swift in Sources */,
 				B13B16C62BC254AE00216B6F /* ContentView.swift in Sources */,
 				B13B16D52BC2BD2D00216B6F /* ObservalObject.swift in Sources */,
+				B13B16D92BC4227800216B6F /* DeviceModel.swift in Sources */,
 				B13B16D02BC2B0DD00216B6F /* CharacterManager.swift in Sources */,
 				B13B16BF2BC254AE00216B6F /* DateUtil.swift in Sources */,
 				B13B16C02BC254AE00216B6F /* CharacterData.swift in Sources */,

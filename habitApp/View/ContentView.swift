@@ -9,85 +9,73 @@ import SwiftUI
 
 //メイン画面
 struct ContentView: View {
+    //キャラクター情報管理クラス
+    private let characterManager = CharacterManager()
+    //タスク情報管理クラス
+    private let taskManager = TaskManager()
+    //キャクター情報
+    @EnvironmentObject var characterObject: CharacterObject
+    //タスク情報
+    @EnvironmentObject var taskObject: TaskObject
+    
     var body: some View {
         NavigationStack {
             VStack {
-                //ヘッダー
-                ContentHeader()
-                    .padding()
                 Spacer()
-                //メイン
-                ContentMain()
+                //キャラクター部分
+                ChracterView()
                 Spacer()
-                //フッター
-                ContentFooter()
+                //ボタン部分
+                TaskButtonView()
+                Spacer()
             }
             .padding()
-        }
-    }
-}
-
-//メイン画面ヘッダー部分
-struct ContentHeader: View {
-    @EnvironmentObject var characterObject: CharacterObject
-    //キャラクター情報管理クラス
-    private let characterManager = CharacterManager()
-    var body: some View{
-        HStack {
-            //キャラ名
-            Text("クマネコ")
-                .font(.system(size: 25))
-                .padding()
-            Spacer()
-                .frame(width: 110)
-            VStack {
-                //キャラクターのレベル
-                Text("Lv." + String(levelSet(allExperiencePoint: characterObject.characterData.allExperiencePoint)))
-                    .font(.system(size: 25))
-                    .padding()
-            }
-        }
-        .onAppear(){
-            //タスク情報を取得し、taskObjectに渡す
-            characterObject.characterData = characterManager.loadTask(forKey: "characterData")
-        }
-    }
-}
-
-//メイン画面のメイン部分
-struct ContentMain: View {
-    var body: some View{
-        //キャラクター画像
-        Image("kumaneko")
-            .resizable()
-            .scaledToFit()
-            .frame(width: UIScreen.main.bounds.width/2)
-    }
-}
-
-//メイン画面のフッターの部分
-struct ContentFooter: View {
-    @EnvironmentObject var taskObject: TaskObject
-    //タスク情報管理クラス
-    private let taskManager = TaskManager()
-    var body: some View{
-            //タスク画面遷移ボタン
-            Button {
-            } label: {
-                NavigationLink(destination: TaskListView().navigationTitle("Task")){
-                    Text("Task")
-                        .modifier(CustomModifier(color: .blue))
-                        .padding()
-                }
-            }
             .onAppear(){
                 //タスク情報を取得し、taskObjectに渡す
+                characterObject.characterData = characterManager.loadTask(forKey: "characterData")
+                //タスク情報を取得し、taskObjectに渡す
                 taskObject.taskData = taskManager.loadTask(forKey: "taskData") ?? []
+            }
+        }
+    }
+    
+    //キャラクター部分
+    @ViewBuilder
+    private func ChracterView() -> some View {
+        VStack {
+            HStack {
+                //キャラ名
+                Text("クマネコ")
+                //キャラクターのレベル
+                Text("Lv.\(levelSet(allExperiencePoint: characterObject.characterData.allExperiencePoint))")
+            }
+            .font(.title)
+            //キャラクター画像
+            Image("kumaneko")
+                .resizable()
+                .scaledToFit()
+                .frame(width: DeviceModel.width/2)
+        }
+        
+        
+    }
+    
+    //タスクボタン部分
+    @ViewBuilder
+    private func TaskButtonView() -> some View {
+        //タスク画面遷移ボタン
+        NavigationLink(destination: TaskListView()){
+            Text("Task")
+                .modifier(CustomModifier(color: .blue))
+                .padding(.horizontal, 50)
+                .padding(.vertical)
+                .background(.blue)
+                .foregroundStyle(.white)
+                .font(.title)
+                .cornerRadius(10)
         }
     }
 }
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
