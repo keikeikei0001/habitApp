@@ -11,11 +11,11 @@ struct TaskAddView: View {
     // モーダル遷移フラグ
     @Binding var isTaskAddView: Bool
     // テキストフィールドの入力値
-    @State var inputTaskName = ""
+    @State private var inputTaskName = ""
     // テキストフィールドにフォーカスの有無
-    @FocusState var isFocused: Bool
+    @FocusState private var isFocused: Bool
     // タスク情報
-    @EnvironmentObject var taskObject: TaskObject
+    @EnvironmentObject private var taskObject: TaskObject
     // タスク管理クラス
     private let taskManager = TaskManager()
     

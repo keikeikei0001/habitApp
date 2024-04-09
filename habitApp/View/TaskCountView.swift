@@ -9,13 +9,13 @@ import SwiftUI
 
 struct TaskCountView: View {
     // ボタンの活性状態
-    @State var buttonEnable: Bool = true
+    @State private var buttonEnable: Bool = true
     // タスク情報
-    @EnvironmentObject var taskObject: TaskObject
+    @EnvironmentObject private var taskObject: TaskObject
     // キャラクター情報
-    @EnvironmentObject var characterObject: CharacterObject
+    @EnvironmentObject private var characterObject: CharacterObject
     
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     // 対象タスクのindex
     let index: Int
     // 今日の日付(時間は0時0分0秒0コンマ秒を指定)

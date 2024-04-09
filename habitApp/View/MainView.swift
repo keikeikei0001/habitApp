@@ -13,9 +13,9 @@ struct MainView: View {
     // タスク情報管理クラス
     private let taskManager = TaskManager()
     // キャクター情報
-    @EnvironmentObject var characterObject: CharacterObject
+    @EnvironmentObject private var characterObject: CharacterObject
     // タスク情報
-    @EnvironmentObject var taskObject: TaskObject
+    @EnvironmentObject private var taskObject: TaskObject
     
     var body: some View {
         NavigationStack {
