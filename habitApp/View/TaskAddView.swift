@@ -7,26 +7,25 @@
 
 import SwiftUI
 
-//タスク追加画面
 struct TaskAddView: View {
-    //モーダル遷移フラグ
+    // モーダル遷移フラグ
     @Binding var isTaskAddView: Bool
-    //テキストフィールドの入力値
+    // テキストフィールドの入力値
     @State var inputTaskName = ""
-    //テキストフィールドにフォーカスの有無
+    // テキストフィールドにフォーカスの有無
     @FocusState var isFocused: Bool
-    //タスク情報
+    // タスク情報
     @EnvironmentObject var taskObject: TaskObject
-    //タスク管理クラス
+    // タスク管理クラス
     private let taskManager = TaskManager()
     
     var body: some View {
         VStack {
             Spacer()
-            /// タスク名入力用テキストフィールド
+            // タスク名入力用テキストフィールド
             taskTextFieldView()
             Spacer()
-            /// タスク追加ボタン
+            // タスク追加ボタン
             taskAddButtonView()
             Spacer()
         }
@@ -35,7 +34,7 @@ struct TaskAddView: View {
     @ViewBuilder
     private func taskTextFieldView() ->some View {
         VStack {
-            //画面.タスク入力テキストフィールド
+            // 画面.タスク入力テキストフィールド
             TextField("タスク名を入力してください", text: $inputTaskName)
                 .textFieldStyle(.roundedBorder)
                 .padding()
@@ -46,7 +45,7 @@ struct TaskAddView: View {
     @ViewBuilder
     private func taskAddButtonView() ->some View {
         Button {
-            //タスク追加ボタン押下時メソッド
+            // タスク追加ボタン押下時メソッド
             taskAdd()
         }label: {
             Text("Create")
@@ -61,17 +60,17 @@ struct TaskAddView: View {
     
     /// タスク追加ボタン押下時
     private func taskAdd() {
-        //テキストフィールドへのフォーカス解除
+        // テキストフィールドへのフォーカス解除
         isFocused = false
-        //タスク情報取得
+        // タスク情報取得
         var todoArray = taskManager.loadTask(forKey: "taskData") ?? []
-        //新しいタスクを追加し、保存
+        // 新しいタスクを追加し、保存
         let taskData = TaskData(taskName: inputTaskName)
         todoArray.append(taskData)
         taskManager.saveTask(taskArray: todoArray, forKey: "taskData")
-        //追加されたタスク情報を画面に描画
+        // 追加されたタスク情報を画面に描画
         taskObject.taskData = taskManager.loadTask(forKey: "taskData") ?? []
-        //モーダル遷移を閉じる
+        // モーダル遷移を閉じる
         isTaskAddView = false
     }
 }

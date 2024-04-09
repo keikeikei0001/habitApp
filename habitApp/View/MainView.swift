@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  habitApp
 //
 //  Created by 松田圭右 on 2024/04/03.
@@ -7,33 +7,32 @@
 
 import SwiftUI
 
-//メイン画面
 struct MainView: View {
-    //キャラクター情報管理クラス
+    // キャラクター情報管理クラス
     private let characterManager = CharacterManager()
-    //タスク情報管理クラス
+    // タスク情報管理クラス
     private let taskManager = TaskManager()
-    //キャクター情報
+    // キャクター情報
     @EnvironmentObject var characterObject: CharacterObject
-    //タスク情報
+    // タスク情報
     @EnvironmentObject var taskObject: TaskObject
     
     var body: some View {
         NavigationStack {
             VStack {
                 Spacer()
-                /// キャラクター部分
+                // キャラクター部分
                 chracterView()
                 Spacer()
-                /// ボタン部分
+                // ボタン部分
                 taskButtonView()
                 Spacer()
             }
             .padding()
             .onAppear {
-                //タスク情報を取得し、taskObjectに渡す
+                // タスク情報を取得し、taskObjectに渡す
                 characterObject.characterData = characterManager.loadTask(forKey: "characterData")
-                //タスク情報を取得し、taskObjectに渡す
+                // タスク情報を取得し、taskObjectに渡す
                 taskObject.taskData = taskManager.loadTask(forKey: "taskData") ?? []
             }
         }
@@ -44,9 +43,9 @@ struct MainView: View {
     private func chracterView() -> some View {
         VStack {
             HStack {
-                //キャラ名
+                // キャラ名
                 Text("クマネコ")
-                //キャラクターのレベル
+                // キャラクターのレベル
                 Text("Lv.\(levelSet(allExperiencePoint: characterObject.characterData.allExperiencePoint))")
             }
             .font(.title)
@@ -61,7 +60,7 @@ struct MainView: View {
     /// タスクボタン部分
     @ViewBuilder
     private func taskButtonView() -> some View {
-        //タスク画面遷移ボタン
+        // タスク画面遷移ボタン
         NavigationLink(destination: TaskListView()) {
             Text("Task")
                 .padding(.horizontal, 50)
