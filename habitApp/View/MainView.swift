@@ -8,7 +8,7 @@
 import SwiftUI
 
 //メイン画面
-struct ContentView: View {
+struct MainView: View {
     //キャラクター情報管理クラス
     private let characterManager = CharacterManager()
     //タスク情報管理クラス
@@ -22,15 +22,15 @@ struct ContentView: View {
         NavigationStack {
             VStack {
                 Spacer()
-                //キャラクター部分
-                ChracterView()
+                /// キャラクター部分
+                chracterView()
                 Spacer()
-                //ボタン部分
-                TaskButtonView()
+                /// ボタン部分
+                taskButtonView()
                 Spacer()
             }
             .padding()
-            .onAppear(){
+            .onAppear {
                 //タスク情報を取得し、taskObjectに渡す
                 characterObject.characterData = characterManager.loadTask(forKey: "characterData")
                 //タスク情報を取得し、taskObjectに渡す
@@ -39,9 +39,9 @@ struct ContentView: View {
         }
     }
     
-    //キャラクター部分
+    /// キャラクター部分
     @ViewBuilder
-    private func ChracterView() -> some View {
+    private func chracterView() -> some View {
         VStack {
             HStack {
                 //キャラ名
@@ -56,15 +56,13 @@ struct ContentView: View {
                 .scaledToFit()
                 .frame(width: DeviceModel.width/2)
         }
-        
-        
     }
     
-    //タスクボタン部分
+    /// タスクボタン部分
     @ViewBuilder
-    private func TaskButtonView() -> some View {
+    private func taskButtonView() -> some View {
         //タスク画面遷移ボタン
-        NavigationLink(destination: TaskListView()){
+        NavigationLink(destination: TaskListView()) {
             Text("Task")
                 .padding(.horizontal, 50)
                 .padding(.vertical)
@@ -78,6 +76,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }

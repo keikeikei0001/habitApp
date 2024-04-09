@@ -26,21 +26,20 @@ struct TaskCountView: View {
     //キャラクター情報管理メソッド
     private let characterManager = CharacterManager()
     
-    
     var body: some View {
         VStack {
             Spacer()
-            //画面.タスク名
+            /// 画面.タスク名
             taskNameView()
             Spacer()
-            //画面.継続回数
+            /// 画面.継続回数
             taskCountView()
             Spacer()
-            //画面.タスクカウントボタン
+            /// 画面.タスクカウントボタン
             taskCountButtonView()
             Spacer()
         }
-        .onAppear() {
+        .onAppear {
             //タスクを1回でも行い、タスク情報.最終完了日が今日の場合、タスク完了ボタンを非活性にする
             if (taskObject.taskData[index].lastDoneDate == now && taskObject.taskData[index].continationCount != 0) {
                 buttonEnable = false
@@ -57,22 +56,22 @@ struct TaskCountView: View {
             }
         }
     }
-    //画面.タスク名
+    /// 画面.タスク名
     @ViewBuilder
     private func taskNameView() -> some View {
         Text(taskObject.taskData[index].taskName)
     }
-    //画面.継続回数
+    /// 画面.継続回数
     @ViewBuilder
     private func taskCountView() -> some View {
         Text("\(taskObject.taskData[index].continationCount)")
     }
-    //画面.タスクカウントボタン
+    /// 画面.タスクカウントボタン
     @ViewBuilder
     private func taskCountButtonView() -> some View {
         //タスク完了ボタン
         Button {
-            //タスク完了時処理
+            /// タスク完了時処理
             taskDone()
         } label: {
             if (buttonEnable) {
@@ -98,7 +97,7 @@ struct TaskCountView: View {
         .disabled(!buttonEnable)
     }
     
-    //タスク完了時の処理
+    /// タスク完了時の処理
     private func taskDone() {
         //タスク情報.継続回数に１を足す
         taskObject.taskData[index].continationCount += 1
@@ -112,7 +111,7 @@ struct TaskCountView: View {
         buttonEnable.toggle()
     }
     
-    //タスク削除時の処理
+    /// タスク削除時の処理
     private func taskDelete() {
         //遷移元に戻る
         dismiss()

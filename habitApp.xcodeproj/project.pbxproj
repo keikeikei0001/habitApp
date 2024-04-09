@@ -15,7 +15,7 @@
 		B13B16C32BC254AE00216B6F /* habitAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BA2BC254AE00216B6F /* habitAppApp.swift */; };
 		B13B16C42BC254AE00216B6F /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BB2BC254AE00216B6F /* TaskManager.swift */; };
 		B13B16C52BC254AE00216B6F /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BC2BC254AE00216B6F /* TaskData.swift */; };
-		B13B16C62BC254AE00216B6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BD2BC254AE00216B6F /* ContentView.swift */; };
+		B13B16C62BC254AE00216B6F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BD2BC254AE00216B6F /* MainView.swift */; };
 		B13B16CA2BC261A000216B6F /* TaskAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16C92BC261A000216B6F /* TaskAddView.swift */; };
 		B13B16CC2BC26E4000216B6F /* TaskCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16CB2BC26E4000216B6F /* TaskCountView.swift */; };
 		B13B16CE2BC275FB00216B6F /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16CD2BC275FB00216B6F /* CustomModifier.swift */; };
@@ -35,7 +35,7 @@
 		B13B16BA2BC254AE00216B6F /* habitAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = habitAppApp.swift; sourceTree = "<group>"; };
 		B13B16BB2BC254AE00216B6F /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		B13B16BC2BC254AE00216B6F /* TaskData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
-		B13B16BD2BC254AE00216B6F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B13B16BD2BC254AE00216B6F /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B13B16C92BC261A000216B6F /* TaskAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAddView.swift; sourceTree = "<group>"; };
 		B13B16CB2BC26E4000216B6F /* TaskCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCountView.swift; sourceTree = "<group>"; };
 		B13B16CD2BC275FB00216B6F /* CustomModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		B13B16C82BC2557700216B6F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B13B16BD2BC254AE00216B6F /* ContentView.swift */,
+				B13B16BD2BC254AE00216B6F /* MainView.swift */,
 				B13B16B42BC254AE00216B6F /* TaskListView.swift */,
 				B13B16C92BC261A000216B6F /* TaskAddView.swift */,
 				B13B16CB2BC26E4000216B6F /* TaskCountView.swift */,
@@ -204,7 +204,7 @@
 				B13B16C42BC254AE00216B6F /* TaskManager.swift in Sources */,
 				B13B16D22BC2B92C00216B6F /* CharacterUtil.swift in Sources */,
 				B13B16CE2BC275FB00216B6F /* CustomModifier.swift in Sources */,
-				B13B16C62BC254AE00216B6F /* ContentView.swift in Sources */,
+				B13B16C62BC254AE00216B6F /* MainView.swift in Sources */,
 				B13B16D52BC2BD2D00216B6F /* ObservalObject.swift in Sources */,
 				B13B16D92BC4227800216B6F /* DeviceModel.swift in Sources */,
 				B13B16D02BC2B0DD00216B6F /* CharacterManager.swift in Sources */,

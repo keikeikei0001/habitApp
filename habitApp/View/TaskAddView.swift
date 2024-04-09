@@ -23,17 +23,17 @@ struct TaskAddView: View {
     var body: some View {
         VStack {
             Spacer()
-            //タスク名入力用テキストフィールド
-            TaskTextFieldView()
+            /// タスク名入力用テキストフィールド
+            taskTextFieldView()
             Spacer()
-            //タスク追加ボタン
-            TaskAddButtonView()
+            /// タスク追加ボタン
+            taskAddButtonView()
             Spacer()
         }
     }
-    //タスク名入力用テキストフィールド
+    /// タスク名入力用テキストフィールド
     @ViewBuilder
-    private func TaskTextFieldView() ->some View {
+    private func taskTextFieldView() ->some View {
         VStack {
             //画面.タスク入力テキストフィールド
             TextField("タスク名を入力してください", text: $inputTaskName)
@@ -42,9 +42,9 @@ struct TaskAddView: View {
                 .focused($isFocused)
         }
     }
-    //タスク追加ボタン
+    /// タスク追加ボタン
     @ViewBuilder
-    private func TaskAddButtonView() ->some View {
+    private func taskAddButtonView() ->some View {
         Button {
             //タスク追加ボタン押下時メソッド
             taskAdd()
@@ -59,7 +59,7 @@ struct TaskAddView: View {
         }
     }
     
-    //タスク追加ボタン押下時
+    /// タスク追加ボタン押下時
     private func taskAdd() {
         //テキストフィールドへのフォーカス解除
         isFocused = false

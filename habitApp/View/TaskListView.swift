@@ -15,40 +15,40 @@ struct TaskListView: View {
     @State var isTaskAddView = false
     
     var body: some View {
-        //タスクテーブル
-        TaskTableView()
-        .toolbar {
-            // ナビゲーションバーの右側に＋ボタンを配置
-            // ボタン押下時、TaskAddViewに遷移する
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    isTaskAddView = true
-                } label: {
-                    Image(systemName: "plus")
-                }
-                .sheet(isPresented: $isTaskAddView) {
-                    TaskAddView( isTaskAddView: $isTaskAddView)
+        /// タスクテーブル
+        taskTableView()
+            .toolbar {
+                // ナビゲーションバーの右側に＋ボタンを配置
+                // ボタン押下時、TaskAddViewに遷移する
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isTaskAddView = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    .sheet(isPresented: $isTaskAddView) {
+                        TaskAddView( isTaskAddView: $isTaskAddView)
+                    }
                 }
             }
-        }
     }
     
-    //タスクテーブル
+    /// タスクテーブル
     @ViewBuilder
-    private func TaskTableView() -> some View {
+    private func taskTableView() -> some View {
         List {
             ForEach (Array(taskObject.taskData.enumerated()), id: \.element.taskId) { index, task in
                 NavigationLink(destination: TaskCountView(index: index) ) {
                     //タスクテーブルセル
-                    TaskTableCellView(index: index)
+                    taskTableCellView(index: index)
                 }
             }
         }
     }
     
-    //タスクのテーブルセル
+    /// タスクのテーブルセル
     @ViewBuilder
-    private func TaskTableCellView(index: Int) -> some View {
+    private func taskTableCellView(index: Int) -> some View {
         HStack {
             //タスク情報.タスク名
             Text(taskObject.taskData[index].taskName)
