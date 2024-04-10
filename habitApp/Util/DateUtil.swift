@@ -16,7 +16,7 @@ extension Locale {
 }
 
 extension Date {
-    //日本時間に修正
+    // 日本時間に修正
     var zeroclock: Date {
         return fixed(hour: 9, minute: 0, second: 0)
     }
