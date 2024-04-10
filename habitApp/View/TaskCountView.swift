@@ -44,54 +44,43 @@ struct TaskCountView: View {
                 buttonEnable = false
             }
         }
-        .toolbar {
-            // ナビゲーションバーの右側にdeleteボタンを配置
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    taskDelete()
-                } label: {
-                    Text("delete")
-                }
+        .toolbar(content: toolbarContentDelete)
+    }
+    
+    @ToolbarContentBuilder
+    private func toolbarContentDelete() -> some ToolbarContent {
+        // ナビゲーションの右側にDeleteボタンを配置
+        ToolbarItem(placement: .topBarTrailing) {
+            Button(action: taskDelete){
+                Text("delete")
             }
         }
     }
+    
     /// 画面.タスク名
     @ViewBuilder
     private func taskNameView() -> some View {
         Text(taskObject.taskData[index].taskName)
     }
+    
     /// 画面.継続回数
     @ViewBuilder
     private func taskCountView() -> some View {
         Text("\(taskObject.taskData[index].continationCount)")
     }
+    
     /// 画面.タスクカウントボタン
     @ViewBuilder
     private func taskCountButtonView() -> some View {
         // タスク完了ボタン
-        Button {
-            // タスク完了時処理
-            taskDone()
-        } label: {
-            if (buttonEnable) {
-                // ボタンが活性状態なら色を青にする
+        Button(action: taskDone){
                 Text("Done")
                     .padding(.horizontal, 50)
                     .padding(.vertical)
-                    .background(.blue)
+                    .background(buttonEnable ? .blue :.gray)
                     .foregroundStyle(.white)
                     .font(.title)
                     .cornerRadius(10)
-            } else {
-                // 非活性なら色をグレーにする
-                Text("Done")
-                    .padding(.horizontal, 50)
-                    .padding(.vertical)
-                    .background(.gray)
-                    .foregroundStyle(.white)
-                    .font(.title)
-                    .cornerRadius(10)
-            }
         }
         .disabled(!buttonEnable)
     }

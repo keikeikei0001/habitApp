@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//レベル計算メソッド
+/// レベル計算メソッド
 func levelSet(allExperiencePoint:Int) -> Int {
     let levelPoint = Int(floor(Double(allExperiencePoint / 5))) + 1
     return levelPoint

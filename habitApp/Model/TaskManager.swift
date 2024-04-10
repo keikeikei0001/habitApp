@@ -7,16 +7,15 @@
 
 import Foundation
 
-//タスク情報管理クラス
 class TaskManager {
     let us = UserDefaults.standard
-    //タスク情報保存
+    /// タスク情報保存
     func saveTask(taskArray: [TaskData], forKey: String) {
         let jsonEncoder = JSONEncoder()
         guard let data = try? jsonEncoder.encode(taskArray) else { return }
         us.set(data, forKey: forKey)
     }
-    //タスク情報取得
+    /// タスク情報取得
     func loadTask(forKey: String) -> [TaskData]? {
         let jsonDecoder = JSONDecoder()
         guard let data = us.data(forKey: forKey),

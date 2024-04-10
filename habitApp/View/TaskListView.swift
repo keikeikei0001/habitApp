@@ -11,49 +11,50 @@ struct TaskListView: View {
     // タスク情報
     @EnvironmentObject private var taskObject: TaskObject
     // モーダル遷移フラグ
-    @State var isTaskAddView = false
+    @State private var isTaskAddView = false
     
     var body: some View {
         // タスクテーブル
         taskTableView()
-            .toolbar {
-                // ナビゲーションバーの右側に＋ボタンを配置
-                // ボタン押下時、TaskAddViewに遷移する
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isTaskAddView = true
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                    .sheet(isPresented: $isTaskAddView) {
-                        TaskAddView( isTaskAddView: $isTaskAddView)
-                    }
-                }
+            .toolbar(content: toolbarContentAdd)
+    }
+    
+    @ToolbarContentBuilder
+    private func toolbarContentAdd() -> some ToolbarContent {
+        // ナビゲーションの右側に＋ボタンを配置
+        // ボタン押下時、TaskAddViewに遷移する
+        ToolbarItem(placement: .topBarTrailing) {
+            Button {
+                isTaskAddView = true
+            } label: {
+                Image(systemName: "plus")
             }
+            .sheet(isPresented: $isTaskAddView) {
+                TaskAddView( isTaskAddView: $isTaskAddView)
+            }
+        }
     }
     
     /// タスクテーブル
     @ViewBuilder
     private func taskTableView() -> some View {
-        List {
-            ForEach (Array(taskObject.taskData.enumerated()), id: \.element.taskId) { index, task in
-                NavigationLink(destination: TaskCountView(index: index) ) {
-                    // タスクテーブルセル
-                    taskTableCellView(index: index)
-                }
+        List(Array(taskObject.taskData.enumerated()), id: \.element.taskId) { index, taskData in
+            NavigationLink(destination: TaskCountView(index: index)) {
+                // タスクテーブルセル
+                taskTableCellView(taskData: taskData)
             }
         }
     }
     
     /// タスクのテーブルセル
     @ViewBuilder
-    private func taskTableCellView(index: Int) -> some View {
+    private func taskTableCellView(taskData: TaskData) -> some View {
         HStack {
             // タスク情報.タスク名
-            Text(taskObject.taskData[index].taskName)
+            Text(taskData.taskName)
             Spacer()
             // タスク情報.継続回数
-            Text("\(taskObject.taskData[index].continationCount)")
+            Text("\(taskData.continationCount)")
         }
     }
 }

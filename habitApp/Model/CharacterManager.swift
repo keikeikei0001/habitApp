@@ -7,16 +7,15 @@
 
 import Foundation
 
-//キャラクター情報管理クラス
 class CharacterManager {
     let us = UserDefaults.standard
-    //キャラクター情報保存
+    /// キャラクター情報保存
     func saveTask(taskArray: CharacterData, forKey: String) {
         let jsonEncoder = JSONEncoder()
         guard let data = try? jsonEncoder.encode(taskArray) else { return }
         us.set(data, forKey: forKey)
     }
-    //キャラクター情報取得
+    /// キャラクター情報取得
     func loadTask(forKey: String) -> CharacterData {
         let jsonDecoder = JSONDecoder()
         guard let data = us.data(forKey: forKey),
