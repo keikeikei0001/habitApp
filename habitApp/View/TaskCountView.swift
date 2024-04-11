@@ -44,11 +44,11 @@ struct TaskCountView: View {
                 buttonEnable = false
             }
         }
-        .toolbar(content: toolbarContentDelete)
+        .toolbar(content: toolbarContent)
     }
     
     @ToolbarContentBuilder
-    private func toolbarContentDelete() -> some ToolbarContent {
+    private func toolbarContent() -> some ToolbarContent {
         // ナビゲーションの右側にDeleteボタンを配置
         ToolbarItem(placement: .topBarTrailing) {
             Button(action: taskDelete){

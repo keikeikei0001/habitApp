@@ -16,11 +16,11 @@ struct TaskListView: View {
     var body: some View {
         // タスクテーブル
         taskTableView()
-            .toolbar(content: toolbarContentAdd)
+            .toolbar(content: toolbarContent)
     }
     
     @ToolbarContentBuilder
-    private func toolbarContentAdd() -> some ToolbarContent {
+    private func toolbarContent() -> some ToolbarContent {
         // ナビゲーションの右側に＋ボタンを配置
         // ボタン押下時、TaskAddViewに遷移する
         ToolbarItem(placement: .topBarTrailing) {
