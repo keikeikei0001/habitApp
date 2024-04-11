@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TaskCountView: View {
-    
     // ボタンの活性状態
     @State private var buttonEnable: Bool = true
     // タスク情報
