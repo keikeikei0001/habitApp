@@ -40,7 +40,7 @@ struct TaskCountView: View {
         }
         .onAppear {
             // タスクを1回でも行い、タスク情報.最終完了日が今日の場合、タスク完了ボタンを非活性にする
-            if (taskObject.taskData[index].lastDoneDate == now && taskObject.taskData[index].continationCount != 0) {
+            if taskObject.taskData[index].lastDoneDate == now && taskObject.taskData[index].continationCount != 0 {
                 buttonEnable = false
             }
         }
@@ -51,7 +51,7 @@ struct TaskCountView: View {
     private func toolbarContent() -> some ToolbarContent {
         // ナビゲーションの右側にDeleteボタンを配置
         ToolbarItem(placement: .topBarTrailing) {
-            Button(action: taskDelete){
+            Button(action: taskDelete) {
                 Text("delete")
             }
         }
@@ -73,14 +73,14 @@ struct TaskCountView: View {
     @ViewBuilder
     private func taskCountButtonView() -> some View {
         // タスク完了ボタン
-        Button(action: taskDone){
-                Text("Done")
-                    .padding(.horizontal, 50)
-                    .padding(.vertical)
-                    .background(buttonEnable ? .blue :.gray)
-                    .foregroundStyle(.white)
-                    .font(.title)
-                    .cornerRadius(10)
+        Button(action: taskDone) {
+            Text("Done")
+                .padding(.horizontal, 50)
+                .padding(.vertical)
+                .background(buttonEnable ? .blue :.gray)
+                .foregroundStyle(.white)
+                .font(.title)
+                .cornerRadius(10)
         }
         .disabled(!buttonEnable)
     }

@@ -34,17 +34,17 @@ struct TaskAddView: View {
     /// タスク名入力用テキストフィールド
     @ViewBuilder
     private func taskTextFieldView() -> some View {
-            // 画面.タスク入力テキストフィールド
-            TextField("タスク名を入力してください", text: $inputTaskName)
-                .textFieldStyle(.roundedBorder)
-                .padding()
-                .focused($isFocused)
+        // 画面.タスク入力テキストフィールド
+        TextField("タスク名を入力してください", text: $inputTaskName)
+            .textFieldStyle(.roundedBorder)
+            .padding()
+            .focused($isFocused)
     }
     
     /// タスク追加ボタン
     @ViewBuilder
     private func taskAddButtonView() -> some View {
-        Button(action: taskAdd){
+        Button(action: taskAdd) {
             Text("Create")
                 .padding(.horizontal, 50)
                 .padding(.vertical)
