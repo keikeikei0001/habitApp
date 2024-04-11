@@ -15,6 +15,7 @@ class CharacterManager {
         guard let data = try? jsonEncoder.encode(taskArray) else { return }
         us.set(data, forKey: forKey)
     }
+    
     /// キャラクター情報取得
     func loadTask(forKey: String) -> CharacterData {
         let jsonDecoder = JSONDecoder()

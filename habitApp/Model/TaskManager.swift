@@ -15,6 +15,7 @@ class TaskManager {
         guard let data = try? jsonEncoder.encode(taskArray) else { return }
         us.set(data, forKey: forKey)
     }
+    
     /// タスク情報取得
     func loadTask(forKey: String) -> [TaskData]? {
         let jsonDecoder = JSONDecoder()
