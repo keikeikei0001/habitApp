@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    
     // キャラクター情報管理クラス
     private let characterManager = CharacterManager()
     // タスク情報管理クラス

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TaskAddView: View {
+    
     // モーダル遷移フラグ
     @Binding var isTaskAddView: Bool
     // テキストフィールドの入力値

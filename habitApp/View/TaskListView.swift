@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TaskListView: View {
+    
     // タスク情報
     @EnvironmentObject private var taskObject: TaskObject
     // モーダル遷移フラグ
