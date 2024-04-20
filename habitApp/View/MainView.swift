@@ -8,32 +8,53 @@
 import SwiftUI
 
 struct MainView: View {
+    
     // キャラクター情報管理クラス
-    private let characterManager = CharacterManager()
+    @EnvironmentObject private var characterDataManager: CharacterDataManager
     // タスク情報管理クラス
-    private let taskManager = TaskManager()
-    // キャクター情報
-    @EnvironmentObject private var characterObject: CharacterObject
-    // タスク情報
-    @EnvironmentObject private var taskObject: TaskObject
+    @EnvironmentObject private var taskDataManager: TaskDataManager
+    // 起動時ロードフラグ
+    @State private var isLoading = true
+    
+    private let us = UserDefaults.standard
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                Spacer()
-                // キャラクター部分
-                chracterView()
-                Spacer()
-                // ボタン部分
-                taskButtonView()
-                Spacer()
+        
+        if isLoading {
+            // 画面起動時に呼ばれる
+            // StartUpViewに遷移
+            StartUpView().onAppear {
+                Task {
+                    // ユーザーID、キャラクター情報、タスク情報を取得
+                    await dataGet()
+                    // キャラクター情報がない場合は、キャラクター情報を新規で作成する
+                    await characterCreate()
+                }
+                // 画面が起動してから2.3秒後に[isLoading = false]を代入
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.3) {
+                    withAnimation {
+                        isLoading = false
+                    }
+                }
             }
-            .padding()
-            .onAppear {
-                // タスク情報を取得し、taskObjectに渡す
-                characterObject.characterData = characterManager.loadTask(forKey: "characterData")
-                // タスク情報を取得し、taskObjectに渡す
-                taskObject.taskData = taskManager.loadTask(forKey: "taskData") ?? []
+        } else {
+            NavigationStack {
+                VStack {
+                    Spacer()
+                    // キャラクター部分
+                    chracterView()
+                    Spacer()
+                    // ボタン部分
+                    taskButtonView()
+                    Spacer()
+                }
+                .padding()
+                .onAppear {
+                    Task {
+                        await taskDataManager.fetchTask()
+                        await characterDataManager.fetchCharacter()
+                    }
+                }
             }
         }
     }
@@ -41,19 +62,22 @@ struct MainView: View {
     /// キャラクター部分
     @ViewBuilder
     private func chracterView() -> some View {
-        VStack {
-            HStack {
-                // キャラ名
-                Text("クマネコ")
-                // キャラクターのレベル
-                Text("Lv.\(levelSet(allExperiencePoint: characterObject.characterData.allExperiencePoint))")
+        // 後々、現在使用中のキャラクターを引数にするようにして、キャラを切り替えられるようにする。
+        if let characterData = characterDataManager.characterDataArray.first(where: { $0.id == "kumaneko0001"}) {
+            VStack {
+                HStack {
+                    // キャラ名
+                    Text(characterData.name)
+                    // キャラクターのレベル
+                    Text("Lv.\(levelSet(allExperiencePoint: characterData.allExperiencePoint))")
+                }
+                .font(.title)
+                // キャラクター画像
+                Image(characterData.id)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: DeviceModel.width/2)
             }
-            .font(.title)
-            //キャラクター画像
-            Image("kumaneko")
-                .resizable()
-                .scaledToFit()
-                .frame(width: DeviceModel.width/2)
         }
     }
     
@@ -69,6 +93,33 @@ struct MainView: View {
                 .foregroundStyle(.white)
                 .font(.title)
                 .cornerRadius(10)
+        }
+    }
+    
+    /// 情報取得メソッド
+    private func dataGet() async {
+        // ユーザーIDを取得する
+        let userId = us.string(forKey: "userId") ?? ""
+        
+        if userId == "" {
+            us.set("\(UUID())", forKey: "userId")
+        }
+        // キャラクター情報取得
+        await characterDataManager.fetchCharacter()
+        // タスク情報取得
+        await taskDataManager.fetchTask()
+    }
+    
+    /// キャラクター情報新規作成
+    private func characterCreate() async {
+        if characterDataManager.characterDataArray.count == 0 {
+            await characterDataManager.saveCharacter(id: "kumaneko0001", name: "安倍　晋三") { error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                } else {
+                    print("Character create successfully.")
+                }
+            }
         }
     }
 }

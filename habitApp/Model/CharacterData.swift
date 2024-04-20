@@ -4,11 +4,16 @@
 //
 //  Created by 松田圭右 on 2024/04/04.
 //
-import Foundation
+
+import FirebaseFirestore
 
 // キャラクター情報
-struct CharacterData: Codable {
+struct CharacterData: Identifiable {
+    // キャラクターID
+    var id: String
+    // キャラクター名
+    var name: String
     // 総保有経験値
-    var allExperiencePoint:Int = 0
+    var allExperiencePoint:Int
 }
 

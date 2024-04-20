@@ -13,16 +13,22 @@
 		B13B16C12BC254AE00216B6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B13B16B72BC254AE00216B6F /* Assets.xcassets */; };
 		B13B16C22BC254AE00216B6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B13B16B92BC254AE00216B6F /* Preview Assets.xcassets */; };
 		B13B16C32BC254AE00216B6F /* habitAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BA2BC254AE00216B6F /* habitAppApp.swift */; };
-		B13B16C42BC254AE00216B6F /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BB2BC254AE00216B6F /* TaskManager.swift */; };
 		B13B16C52BC254AE00216B6F /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BC2BC254AE00216B6F /* TaskData.swift */; };
 		B13B16C62BC254AE00216B6F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BD2BC254AE00216B6F /* MainView.swift */; };
 		B13B16CA2BC261A000216B6F /* TaskAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16C92BC261A000216B6F /* TaskAddView.swift */; };
 		B13B16CC2BC26E4000216B6F /* TaskCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16CB2BC26E4000216B6F /* TaskCountView.swift */; };
 		B13B16CE2BC275FB00216B6F /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16CD2BC275FB00216B6F /* CustomModifier.swift */; };
-		B13B16D02BC2B0DD00216B6F /* CharacterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16CF2BC2B0DD00216B6F /* CharacterManager.swift */; };
 		B13B16D22BC2B92C00216B6F /* CharacterUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16D12BC2B92C00216B6F /* CharacterUtil.swift */; };
-		B13B16D52BC2BD2D00216B6F /* ObservalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16D42BC2BD2D00216B6F /* ObservalObject.swift */; };
 		B13B16D92BC4227800216B6F /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16D82BC4227800216B6F /* DeviceModel.swift */; };
+		B18C6C1C2BC813EC000EF3B6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B18C6C1B2BC813EC000EF3B6 /* FirebaseAnalytics */; };
+		B18C6C202BC82031000EF3B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B18C6C1F2BC82031000EF3B6 /* GoogleService-Info.plist */; };
+		B18C6C252BC823EF000EF3B6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B18C6C242BC823EF000EF3B6 /* FirebaseFirestoreSwift */; };
+		B18C6C272BC8240A000EF3B6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B18C6C262BC8240A000EF3B6 /* FirebaseFirestore */; };
+		B1E97E132BC82C55005F8DFB /* ChracterDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E122BC82C55005F8DFB /* ChracterDataManager.swift */; };
+		B1E97E152BC8B2CB005F8DFB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B1E97E142BC8B2CB005F8DFB /* FirebaseAuth */; };
+		B1E97E172BC8B2D2005F8DFB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B1E97E162BC8B2D2005F8DFB /* FirebaseAnalyticsSwift */; };
+		B1E97E192BC940CD005F8DFB /* TaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E182BC940CD005F8DFB /* TaskDataManager.swift */; };
+		B1E97E1B2BC95469005F8DFB /* StartUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E1A2BC95469005F8DFB /* StartUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,16 +39,17 @@
 		B13B16B72BC254AE00216B6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B13B16B92BC254AE00216B6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B13B16BA2BC254AE00216B6F /* habitAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = habitAppApp.swift; sourceTree = "<group>"; };
-		B13B16BB2BC254AE00216B6F /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		B13B16BC2BC254AE00216B6F /* TaskData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
 		B13B16BD2BC254AE00216B6F /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B13B16C92BC261A000216B6F /* TaskAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAddView.swift; sourceTree = "<group>"; };
 		B13B16CB2BC26E4000216B6F /* TaskCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCountView.swift; sourceTree = "<group>"; };
 		B13B16CD2BC275FB00216B6F /* CustomModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
-		B13B16CF2BC2B0DD00216B6F /* CharacterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterManager.swift; sourceTree = "<group>"; };
 		B13B16D12BC2B92C00216B6F /* CharacterUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUtil.swift; sourceTree = "<group>"; };
-		B13B16D42BC2BD2D00216B6F /* ObservalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservalObject.swift; sourceTree = "<group>"; };
 		B13B16D82BC4227800216B6F /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
+		B18C6C1F2BC82031000EF3B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B1E97E122BC82C55005F8DFB /* ChracterDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChracterDataManager.swift; sourceTree = "<group>"; };
+		B1E97E182BC940CD005F8DFB /* TaskDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataManager.swift; sourceTree = "<group>"; };
+		B1E97E1A2BC95469005F8DFB /* StartUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +57,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B18C6C1C2BC813EC000EF3B6 /* FirebaseAnalytics in Frameworks */,
+				B18C6C252BC823EF000EF3B6 /* FirebaseFirestoreSwift in Frameworks */,
+				B18C6C272BC8240A000EF3B6 /* FirebaseFirestore in Frameworks */,
+				B1E97E152BC8B2CB005F8DFB /* FirebaseAuth in Frameworks */,
+				B1E97E172BC8B2D2005F8DFB /* FirebaseAnalyticsSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +73,7 @@
 			children = (
 				B13B16B32BC254AE00216B6F /* habitApp */,
 				B13B16972BBD99C500216B6F /* Products */,
+				B18C6C232BC823EF000EF3B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +88,7 @@
 		B13B16B32BC254AE00216B6F /* habitApp */ = {
 			isa = PBXGroup;
 			children = (
+				B18C6C1F2BC82031000EF3B6 /* GoogleService-Info.plist */,
 				B13B16BA2BC254AE00216B6F /* habitAppApp.swift */,
 				B13B16D32BC2BB7600216B6F /* Util */,
 				B13B16C82BC2557700216B6F /* View */,
@@ -96,13 +110,12 @@
 		B13B16C72BC2552100216B6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B13B16BB2BC254AE00216B6F /* TaskManager.swift */,
-				B13B16CF2BC2B0DD00216B6F /* CharacterManager.swift */,
 				B13B16B62BC254AE00216B6F /* CharacterData.swift */,
 				B13B16BC2BC254AE00216B6F /* TaskData.swift */,
 				B13B16CD2BC275FB00216B6F /* CustomModifier.swift */,
-				B13B16D42BC2BD2D00216B6F /* ObservalObject.swift */,
 				B13B16D82BC4227800216B6F /* DeviceModel.swift */,
+				B1E97E122BC82C55005F8DFB /* ChracterDataManager.swift */,
+				B1E97E182BC940CD005F8DFB /* TaskDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -114,6 +127,7 @@
 				B13B16B42BC254AE00216B6F /* TaskListView.swift */,
 				B13B16C92BC261A000216B6F /* TaskAddView.swift */,
 				B13B16CB2BC26E4000216B6F /* TaskCountView.swift */,
+				B1E97E1A2BC95469005F8DFB /* StartUpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -125,6 +139,13 @@
 				B13B16D12BC2B92C00216B6F /* CharacterUtil.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		B18C6C232BC823EF000EF3B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +164,13 @@
 			dependencies = (
 			);
 			name = habitApp;
+			packageProductDependencies = (
+				B18C6C1B2BC813EC000EF3B6 /* FirebaseAnalytics */,
+				B18C6C242BC823EF000EF3B6 /* FirebaseFirestoreSwift */,
+				B18C6C262BC8240A000EF3B6 /* FirebaseFirestore */,
+				B1E97E142BC8B2CB005F8DFB /* FirebaseAuth */,
+				B1E97E162BC8B2D2005F8DFB /* FirebaseAnalyticsSwift */,
+			);
 			productName = habitApp;
 			productReference = B13B16962BBD99C500216B6F /* habitApp.app */;
 			productType = "com.apple.product-type.application";
@@ -171,6 +199,9 @@
 				Base,
 			);
 			mainGroup = B13B168D2BBD99C500216B6F;
+			packageReferences = (
+				B18C6C1A2BC80B42000EF3B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = B13B16972BBD99C500216B6F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -187,6 +218,7 @@
 			files = (
 				B13B16C22BC254AE00216B6F /* Preview Assets.xcassets in Resources */,
 				B13B16C12BC254AE00216B6F /* Assets.xcassets in Resources */,
+				B18C6C202BC82031000EF3B6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,13 +233,13 @@
 				B13B16BE2BC254AE00216B6F /* TaskListView.swift in Sources */,
 				B13B16C52BC254AE00216B6F /* TaskData.swift in Sources */,
 				B13B16CA2BC261A000216B6F /* TaskAddView.swift in Sources */,
-				B13B16C42BC254AE00216B6F /* TaskManager.swift in Sources */,
 				B13B16D22BC2B92C00216B6F /* CharacterUtil.swift in Sources */,
 				B13B16CE2BC275FB00216B6F /* CustomModifier.swift in Sources */,
 				B13B16C62BC254AE00216B6F /* MainView.swift in Sources */,
-				B13B16D52BC2BD2D00216B6F /* ObservalObject.swift in Sources */,
+				B1E97E132BC82C55005F8DFB /* ChracterDataManager.swift in Sources */,
+				B1E97E192BC940CD005F8DFB /* TaskDataManager.swift in Sources */,
+				B1E97E1B2BC95469005F8DFB /* StartUpView.swift in Sources */,
 				B13B16D92BC4227800216B6F /* DeviceModel.swift in Sources */,
-				B13B16D02BC2B0DD00216B6F /* CharacterManager.swift in Sources */,
 				B13B16BF2BC254AE00216B6F /* DateUtil.swift in Sources */,
 				B13B16C02BC254AE00216B6F /* CharacterData.swift in Sources */,
 				B13B16CC2BC26E4000216B6F /* TaskCountView.swift in Sources */,
@@ -411,6 +443,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B18C6C1A2BC80B42000EF3B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.24.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B18C6C1B2BC813EC000EF3B6 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B18C6C1A2BC80B42000EF3B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B18C6C242BC823EF000EF3B6 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B18C6C1A2BC80B42000EF3B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		B18C6C262BC8240A000EF3B6 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B18C6C1A2BC80B42000EF3B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		B1E97E142BC8B2CB005F8DFB /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B18C6C1A2BC80B42000EF3B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B1E97E162BC8B2D2005F8DFB /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B18C6C1A2BC80B42000EF3B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B13B168E2BBD99C500216B6F /* Project object */;
 }

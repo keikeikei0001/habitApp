@@ -1,5 +1,5 @@
 //
-//  UserViewModel.swift
+//  CharacterdataManager.swift
 //  habitApp
 //
 //  Created by 松田圭右 on 2024/04/11.
@@ -7,36 +7,57 @@
 
 import FirebaseFirestore
 
-class CharacterData: ObservableObject {
-    private var db = Firestore.firestore()
-    // struct Userをデータ型に使う
-    @Published var users: [User] = []
+class CharacterDataManager: ObservableObject {
     
-    // データの追加をするメソッド
-    func saveUser(name: String, completion: @escaping (Error?) -> Void) {
-        let docRef = db.collection("users").document()
+    @Published var characterDataArray: [CharacterData] = []
+    
+    private var db = Firestore.firestore()
+    
+    private let us = UserDefaults.standard
+    
+    // キャラクター情報の追加をするメソッド
+    func saveCharacter(id: String, name: String, completion: @escaping (Error?) -> Void) async {
+        let userId = us.string(forKey: "userId") ?? ""
         
-        let user = User(id: docRef.documentID, name: name, createdAt: Timestamp())
+        let docRef = db.collection("user/\(userId)/characterData").document(id)
+        
+        let characterData = CharacterData(id: docRef.documentID, name: name, allExperiencePoint: 0)
         
         docRef.setData([
-            "id": user.id,
-            "name": user.name,
-            "createdAt": user.createdAt
+            "id": characterData.id,
+            "name": characterData.name,
+            "allExperiencePoint": characterData.allExperiencePoint
         ]) { error in
             completion(error)
         }
+        await fetchCharacter()
     }
     
-    // データを取得して表示するメソッド
-    func fetchUsers() {
-        db.collection("users").getDocuments { snapshot, error in
+    // 対象キャラクターの経験値に1を足す
+    func getExperiencePoint(characterData: CharacterData, completion: @escaping (Error?) -> Void) async {
+        let userId = us.string(forKey: "userId") ?? ""
+        
+        let docRef = db.collection("user/\(userId)/characterData").document(characterData.id)
+        
+        docRef.updateData([
+            "allExperiencePoint": characterData.allExperiencePoint + 1
+        ]) { error in
+            completion(error)
+        }
+        await fetchCharacter()
+    }
+    
+    // キャラクター情報を取得して表示するメソッド
+    func fetchCharacter() async {
+        let userId = us.string(forKey: "userId") ?? ""
+        
+        db.collection("user/\(userId)/characterData").getDocuments { snapshot, error in
             if let error = error {
-                print("Error getting documents: \(error)")
+                print("Error getting characeterData: \(error)")
             } else {
-                self.users = snapshot?.documents.map {
-                    User(id: $0.documentID,
-                         name: $0.data()["name"] as? String ?? "",
-                         createdAt: $0.data()["createdAt"] as? Timestamp ?? Timestamp())
+                self.characterDataArray = snapshot?.documents.map {
+                    CharacterData(id: $0.documentID, name: $0.data()["name"] as? String ?? "クマネコ",
+                                  allExperiencePoint: $0.data()["allExperiencePoint"] as? Int ?? 0)
                 } ?? []
             }
         }

@@ -14,10 +14,8 @@ struct TaskAddView: View {
     @State private var inputTaskName = ""
     // テキストフィールドにフォーカスの有無
     @FocusState private var isFocused: Bool
-    // タスク情報
-    @EnvironmentObject private var taskObject: TaskObject
-    // タスク管理クラス
-    private let taskManager = TaskManager()
+    // タスク情報管理クラス
+    @EnvironmentObject private var taskDataManager: TaskDataManager
     
     var body: some View {
         VStack {
@@ -44,7 +42,11 @@ struct TaskAddView: View {
     /// タスク追加ボタン
     @ViewBuilder
     private func taskAddButtonView() -> some View {
-        Button(action: taskAdd) {
+        Button {
+            Task {
+                await taskAdd()
+            }
+        } label: {
             Text("Create")
                 .padding(.horizontal, 50)
                 .padding(.vertical)
@@ -56,17 +58,17 @@ struct TaskAddView: View {
     }
     
     /// タスク追加ボタン押下時
-    private func taskAdd() {
+    private func taskAdd() async {
         // テキストフィールドへのフォーカス解除
         isFocused = false
-        // タスク情報取得
-        var todoArray = taskManager.loadTask(forKey: "taskData") ?? []
-        // 新しいタスクを追加し、保存
-        let taskData = TaskData(taskName: inputTaskName)
-        todoArray.append(taskData)
-        taskManager.saveTask(taskArray: todoArray, forKey: "taskData")
-        // 追加されたタスク情報を画面に描画
-        taskObject.taskData = taskManager.loadTask(forKey: "taskData") ?? []
+        // タスク追加処理
+        await taskDataManager.savetask(taskName: inputTaskName) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                print("TaskData add successfully.")
+            }
+        }
         // モーダル遷移を閉じる
         isTaskAddView = false
     }

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TaskListView: View {
-    // タスク情報
-    @EnvironmentObject private var taskObject: TaskObject
+    // タスク情報管理クラス
+    @EnvironmentObject private var taskDataManager: TaskDataManager
     // モーダル遷移フラグ
     @State private var isTaskAddView = false
     
@@ -38,8 +38,8 @@ struct TaskListView: View {
     /// タスクテーブル
     @ViewBuilder
     private func taskTableView() -> some View {
-        List(Array(taskObject.taskData.enumerated()), id: \.element.taskId) { index, taskData in
-            NavigationLink(destination: TaskCountView(index: index)) {
+        List(taskDataManager.taskDataArray) { taskData in
+            NavigationLink(destination: TaskCountView(taskData: taskData)) {
                 // タスクテーブルセル
                 taskTableCellView(taskData: taskData)
             }
