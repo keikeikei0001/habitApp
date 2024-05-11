@@ -8,11 +8,7 @@
 import FirebaseFirestore
 
 class TaskDataManager: ObservableObject {
-    
-    @Published var taskDataArray: [TaskData] = []
-    
     private var db = Firestore.firestore()
-    
     private let us = UserDefaults.standard
     
     // タスク情報の追加をするメソッド
@@ -61,18 +57,21 @@ class TaskDataManager: ObservableObject {
     }
     
     // タスク情報を取得して表示するメソッド
-    func fetchTask() async {
+    func fetchTask() async -> [TaskData] {
         let userId = us.string(forKey: "userId") ?? ""
+        
+        var taskDataArray: [TaskData] = []
         
         db.collection("user/\(userId)/taskData").getDocuments { snapshot, error in
             if let error = error {
                 print("Error getting taskData: \(error)")
             } else {
-                self.taskDataArray = snapshot?.documents.map {
+                taskDataArray = snapshot?.documents.map {
                     TaskData(id: $0.documentID, taskName: $0.data()["taskName"] as? String ?? "", continationCount: $0.data()["continationCount"] as? Int ?? 0, lastDoneDate: $0.data()["lastDoneDate"] as? Date ?? Date().zeroclock, createDate: $0.data()["createDate"] as? Date ?? Date().zeroclock)
                 } ?? []
             }
         }
+        return taskDataArray
     }
 }
 

@@ -8,11 +8,7 @@
 import FirebaseFirestore
 
 class CharacterDataManager: ObservableObject {
-    
-    @Published var characterDataArray: [CharacterData] = []
-    
     private var db = Firestore.firestore()
-    
     private let us = UserDefaults.standard
     
     // キャラクター情報の追加をするメソッド
@@ -51,11 +47,13 @@ class CharacterDataManager: ObservableObject {
     func fetchCharacter() async {
         let userId = us.string(forKey: "userId") ?? ""
         
+        var characterDataArray: [CharacterData] = []
+        
         db.collection("user/\(userId)/characterData").getDocuments { snapshot, error in
             if let error = error {
                 print("Error getting characeterData: \(error)")
             } else {
-                self.characterDataArray = snapshot?.documents.map {
+                characterDataArray = snapshot?.documents.map {
                     CharacterData(id: $0.documentID, name: $0.data()["name"] as? String ?? "クマネコ",
                                   allExperiencePoint: $0.data()["allExperiencePoint"] as? Int ?? 0)
                 } ?? []
