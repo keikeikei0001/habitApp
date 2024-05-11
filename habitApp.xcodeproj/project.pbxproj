@@ -29,10 +29,14 @@
 		B1E97E172BC8B2D2005F8DFB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B1E97E162BC8B2D2005F8DFB /* FirebaseAnalyticsSwift */; };
 		B1E97E192BC940CD005F8DFB /* TaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E182BC940CD005F8DFB /* TaskDataManager.swift */; };
 		B1E97E1B2BC95469005F8DFB /* StartUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E1A2BC95469005F8DFB /* StartUpView.swift */; };
+		B1E97E282BE1222E005F8DFB /* TaskAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E272BE1222E005F8DFB /* TaskAddViewModel.swift */; };
+		B1E97E2C2BE65E62005F8DFB /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E2B2BE65E62005F8DFB /* TaskListViewModel.swift */; };
+		B1E97E2E2BE898DC005F8DFB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E2D2BE898DC005F8DFB /* MainViewModel.swift */; };
+		B1E97E302BEA54C8005F8DFB /* TaskCountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E2F2BEA54C8005F8DFB /* TaskCountViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B13B16962BBD99C500216B6F /* habitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = habitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B13B16962BBD99C500216B6F /* habitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = habitApp.app; path = "/Users/matsudakeisuke/Desktop/clone/habitApp/build/Debug-iphoneos/habitApp.app"; sourceTree = "<absolute>"; };
 		B13B16B42BC254AE00216B6F /* TaskListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		B13B16B52BC254AE00216B6F /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		B13B16B62BC254AE00216B6F /* CharacterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
@@ -50,6 +54,10 @@
 		B1E97E122BC82C55005F8DFB /* ChracterDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChracterDataManager.swift; sourceTree = "<group>"; };
 		B1E97E182BC940CD005F8DFB /* TaskDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataManager.swift; sourceTree = "<group>"; };
 		B1E97E1A2BC95469005F8DFB /* StartUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUpView.swift; sourceTree = "<group>"; };
+		B1E97E272BE1222E005F8DFB /* TaskAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAddViewModel.swift; sourceTree = "<group>"; };
+		B1E97E2B2BE65E62005F8DFB /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		B1E97E2D2BE898DC005F8DFB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		B1E97E2F2BEA54C8005F8DFB /* TaskCountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCountViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,17 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				B13B16B32BC254AE00216B6F /* habitApp */,
-				B13B16972BBD99C500216B6F /* Products */,
-				B18C6C232BC823EF000EF3B6 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		B13B16972BBD99C500216B6F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B13B16962BBD99C500216B6F /* habitApp.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		B13B16B32BC254AE00216B6F /* habitApp */ = {
@@ -94,6 +92,7 @@
 				B13B16C82BC2557700216B6F /* View */,
 				B13B16C72BC2552100216B6F /* Model */,
 				B13B16B72BC254AE00216B6F /* Assets.xcassets */,
+				B1E97E262BE120C4005F8DFB /* ViewModel */,
 				B13B16B82BC254AE00216B6F /* Preview Content */,
 			);
 			path = habitApp;
@@ -114,8 +113,6 @@
 				B13B16BC2BC254AE00216B6F /* TaskData.swift */,
 				B13B16CD2BC275FB00216B6F /* CustomModifier.swift */,
 				B13B16D82BC4227800216B6F /* DeviceModel.swift */,
-				B1E97E122BC82C55005F8DFB /* ChracterDataManager.swift */,
-				B1E97E182BC940CD005F8DFB /* TaskDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,15 +134,21 @@
 			children = (
 				B13B16B52BC254AE00216B6F /* DateUtil.swift */,
 				B13B16D12BC2B92C00216B6F /* CharacterUtil.swift */,
+				B1E97E182BC940CD005F8DFB /* TaskDataManager.swift */,
+				B1E97E122BC82C55005F8DFB /* ChracterDataManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
 		};
-		B18C6C232BC823EF000EF3B6 /* Frameworks */ = {
+		B1E97E262BE120C4005F8DFB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B1E97E2D2BE898DC005F8DFB /* MainViewModel.swift */,
+				B1E97E2B2BE65E62005F8DFB /* TaskListViewModel.swift */,
+				B1E97E272BE1222E005F8DFB /* TaskAddViewModel.swift */,
+				B1E97E2F2BEA54C8005F8DFB /* TaskCountViewModel.swift */,
 			);
-			name = Frameworks;
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +205,7 @@
 			packageReferences = (
 				B18C6C1A2BC80B42000EF3B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
-			productRefGroup = B13B16972BBD99C500216B6F /* Products */;
+			productRefGroup = B13B168D2BBD99C500216B6F;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -237,12 +240,16 @@
 				B13B16CE2BC275FB00216B6F /* CustomModifier.swift in Sources */,
 				B13B16C62BC254AE00216B6F /* MainView.swift in Sources */,
 				B1E97E132BC82C55005F8DFB /* ChracterDataManager.swift in Sources */,
+				B1E97E2E2BE898DC005F8DFB /* MainViewModel.swift in Sources */,
 				B1E97E192BC940CD005F8DFB /* TaskDataManager.swift in Sources */,
 				B1E97E1B2BC95469005F8DFB /* StartUpView.swift in Sources */,
+				B1E97E282BE1222E005F8DFB /* TaskAddViewModel.swift in Sources */,
 				B13B16D92BC4227800216B6F /* DeviceModel.swift in Sources */,
 				B13B16BF2BC254AE00216B6F /* DateUtil.swift in Sources */,
+				B1E97E2C2BE65E62005F8DFB /* TaskListViewModel.swift in Sources */,
 				B13B16C02BC254AE00216B6F /* CharacterData.swift in Sources */,
 				B13B16CC2BC26E4000216B6F /* TaskCountView.swift in Sources */,
+				B1E97E302BEA54C8005F8DFB /* TaskCountViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

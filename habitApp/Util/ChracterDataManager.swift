@@ -26,11 +26,10 @@ class CharacterDataManager: ObservableObject {
         ]) { error in
             completion(error)
         }
-        await fetchCharacter()
     }
     
     // 対象キャラクターの経験値に1を足す
-    func getExperiencePoint(characterData: CharacterData, completion: @escaping (Error?) -> Void) async {
+    func getExperiencePoint(characterData: CharacterData, completion: @escaping (Error?) -> Void) async -> [CharacterData] {
         let userId = us.string(forKey: "userId") ?? ""
         
         let docRef = db.collection("user/\(userId)/characterData").document(characterData.id)
@@ -40,11 +39,12 @@ class CharacterDataManager: ObservableObject {
         ]) { error in
             completion(error)
         }
-        await fetchCharacter()
+        var characterDataArray = await fetchCharacter()
+        return characterDataArray
     }
     
     // キャラクター情報を取得して表示するメソッド
-    func fetchCharacter() async {
+    func fetchCharacter() async -> [CharacterData] {
         let userId = us.string(forKey: "userId") ?? ""
         
         var characterDataArray: [CharacterData] = []
@@ -59,5 +59,6 @@ class CharacterDataManager: ObservableObject {
                 } ?? []
             }
         }
+        return characterDataArray
     }
 }

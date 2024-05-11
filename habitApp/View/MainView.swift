@@ -8,32 +8,23 @@
 import SwiftUI
 
 struct MainView: View {
-    
-    // キャラクター情報管理クラス
-    @EnvironmentObject private var characterDataManager: CharacterDataManager
-    // タスク情報管理クラス
-    @EnvironmentObject private var taskDataManager: TaskDataManager
-    // 起動時ロードフラグ
-    @State private var isLoading = true
-    
-    private let us = UserDefaults.standard
+    @StateObject var viewModel: MainViewModel = MainViewModel()
     
     var body: some View {
-        
-        if isLoading {
+        if viewModel.isLoading {
             // 画面起動時に呼ばれる
             // StartUpViewに遷移
             StartUpView().onAppear {
                 Task {
                     // ユーザーID、キャラクター情報、タスク情報を取得
-                    await dataGet()
+                    await viewModel.dataGet()
                     // キャラクター情報がない場合は、キャラクター情報を新規で作成する
-                    await characterCreate()
+                    await viewModel.characterCreate()
                 }
                 // 画面が起動してから2.3秒後に[isLoading = false]を代入
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.3) {
                     withAnimation {
-                        isLoading = false
+                        viewModel.isLoading = false
                     }
                 }
             }
@@ -51,8 +42,7 @@ struct MainView: View {
                 .padding()
                 .onAppear {
                     Task {
-                        await taskDataManager.fetchTask()
-                        await characterDataManager.fetchCharacter()
+                        await viewModel.dataGet()
                     }
                 }
             }
@@ -63,7 +53,7 @@ struct MainView: View {
     @ViewBuilder
     private func chracterView() -> some View {
         // 後々、現在使用中のキャラクターを引数にするようにして、キャラを切り替えられるようにする。
-        if let characterData = characterDataManager.characterDataArray.first(where: { $0.id == "kumaneko0001"}) {
+        if let characterData = viewModel.characterDataArray.first(where: { $0.id == "kumaneko0001"}) {
             VStack {
                 HStack {
                     // キャラ名
@@ -94,38 +84,5 @@ struct MainView: View {
                 .font(.title)
                 .cornerRadius(10)
         }
-    }
-    
-    /// 情報取得メソッド
-    private func dataGet() async {
-        // ユーザーIDを取得する
-        let userId = us.string(forKey: "userId") ?? ""
-        
-        if userId == "" {
-            us.set("\(UUID())", forKey: "userId")
-        }
-        // キャラクター情報取得
-        await characterDataManager.fetchCharacter()
-        // タスク情報取得
-        await taskDataManager.fetchTask()
-    }
-    
-    /// キャラクター情報新規作成
-    private func characterCreate() async {
-        if characterDataManager.characterDataArray.count == 0 {
-            await characterDataManager.saveCharacter(id: "kumaneko0001", name: "安倍　晋三") { error in
-                if let error = error {
-                    print("Error: \(error.localizedDescription)")
-                } else {
-                    print("Character create successfully.")
-                }
-            }
-        }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
     }
 }

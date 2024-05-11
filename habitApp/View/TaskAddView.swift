@@ -8,14 +8,9 @@
 import SwiftUI
 
 struct TaskAddView: View {
-    // モーダル遷移フラグ
-    @Binding var isTaskAddView: Bool
-    // テキストフィールドの入力値
-    @State private var inputTaskName = ""
-    // テキストフィールドにフォーカスの有無
+    @StateObject var viewModel: TaskAddViewModel = TaskAddViewModel()
     @FocusState private var isFocused: Bool
-    // タスク情報管理クラス
-    @EnvironmentObject private var taskDataManager: TaskDataManager
+    @Binding var isTaskAddView: Bool
     
     var body: some View {
         VStack {
@@ -33,7 +28,7 @@ struct TaskAddView: View {
     @ViewBuilder
     private func taskTextFieldView() -> some View {
         // 画面.タスク入力テキストフィールド
-        TextField("タスク名を入力してください", text: $inputTaskName)
+        TextField("タスク名を入力してください", text: $viewModel.inputTaskName)
             .textFieldStyle(.roundedBorder)
             .padding()
             .focused($isFocused)
@@ -44,7 +39,9 @@ struct TaskAddView: View {
     private func taskAddButtonView() -> some View {
         Button {
             Task {
-                await taskAdd()
+                await viewModel.taskAdd()
+                isFocused = false
+                viewModel.isTaskAddView = false
             }
         } label: {
             Text("Create")
@@ -55,21 +52,5 @@ struct TaskAddView: View {
                 .font(.title)
                 .cornerRadius(10)
         }
-    }
-    
-    /// タスク追加ボタン押下時
-    private func taskAdd() async {
-        // テキストフィールドへのフォーカス解除
-        isFocused = false
-        // タスク追加処理
-        await taskDataManager.savetask(taskName: inputTaskName) { error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-            } else {
-                print("TaskData add successfully.")
-            }
-        }
-        // モーダル遷移を閉じる
-        isTaskAddView = false
     }
 }

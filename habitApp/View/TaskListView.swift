@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct TaskListView: View {
-    // タスク情報管理クラス
-    @EnvironmentObject private var taskDataManager: TaskDataManager
-    // モーダル遷移フラグ
-    @State private var isTaskAddView = false
+    @StateObject var viewModel: TaskListViewModel = TaskListViewModel()
     
     var body: some View {
         // タスクテーブル
         taskTableView()
             .toolbar(content: toolbarContent)
+            .onAppear(perform: viewModel.fetchTaskData)
     }
     
     @ToolbarContentBuilder
@@ -25,12 +23,12 @@ struct TaskListView: View {
         // ボタン押下時、TaskAddViewに遷移する
         ToolbarItem(placement: .topBarTrailing) {
             Button {
-                isTaskAddView = true
+                viewModel.isTaskAddView = true
             } label: {
                 Image(systemName: "plus")
             }
-            .sheet(isPresented: $isTaskAddView) {
-                TaskAddView( isTaskAddView: $isTaskAddView)
+            .sheet(isPresented: $viewModel.isTaskAddView, onDismiss: viewModel.fetchTaskData) {
+                TaskAddView(isTaskAddView: $viewModel.isTaskAddView)
             }
         }
     }
@@ -38,8 +36,8 @@ struct TaskListView: View {
     /// タスクテーブル
     @ViewBuilder
     private func taskTableView() -> some View {
-        List(taskDataManager.taskDataArray) { taskData in
-            NavigationLink(destination: TaskCountView(taskData: taskData)) {
+        List(viewModel.tableTaskData) { taskData in
+            NavigationLink(destination: TaskCountView(viewModel: TaskCountViewModel(taskData:taskData))) {
                 // タスクテーブルセル
                 taskTableCellView(taskData: taskData)
             }

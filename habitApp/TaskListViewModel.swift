@@ -7,12 +7,19 @@
 
 import SwiftUI
 
-struct TaskListViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class TaskListViewModel: ObservableObject {
+    @Published var isTaskAddView: Bool = false
+    @Published var tableTaskData: [TaskData] = []
+    
+    private let taskDataManager: TaskDataManager = TaskDataManager()
+    
+    func fetchTaskData() {
+        Task {
+            let  newTaskData = await taskDataManager.fetchTask()
+            DispatchQueue.main.async {
+                // キャラクター情報取得
+                self.tableTaskData = newTaskData
+            }
+        }
     }
-}
-
-#Preview {
-    TaskListViewModel()
 }

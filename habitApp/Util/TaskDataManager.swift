@@ -12,7 +12,7 @@ class TaskDataManager: ObservableObject {
     private let us = UserDefaults.standard
     
     // タスク情報の追加をするメソッド
-    func savetask(taskName: String, completion: @escaping (Error?) -> Void) async {
+    func savetask(taskName: String, completion: @escaping (Error?) -> Void) async -> [TaskData] {
         let userId = us.string(forKey: "userId") ?? ""
         
         let docRef = db.collection("user/\(userId)/taskData").document()
@@ -28,11 +28,12 @@ class TaskDataManager: ObservableObject {
         ]) { error in
             completion(error)
         }
-        await fetchTask()
+        var taskDataArray = await fetchTask()
+        return taskDataArray
     }
     
     // タスクを完了した際の処理
-    func doneTask(taskData: TaskData, completion: @escaping (Error?) -> Void) async {
+    func doneTask(taskData: TaskData, completion: @escaping (Error?) -> Void) async -> [TaskData] {
         let userId = us.string(forKey: "userId") ?? ""
         
         let docRef = db.collection("user/\(userId)/taskData").document(taskData.id)
@@ -41,11 +42,12 @@ class TaskDataManager: ObservableObject {
         ]) { error in
             completion(error)
         }
-        await fetchTask()
+        var taskDataArray = await fetchTask()
+        return taskDataArray
     }
     
     // タスク削除時の処理
-    func deleteTask(taskData: TaskData, completion: @escaping (Error?) -> Void) async {
+    func deleteTask(taskData: TaskData, completion: @escaping (Error?) -> Void) async -> [TaskData] {
         let userId = us.string(forKey: "userId") ?? ""
         
         let docRef = db.collection("user/\(userId)/taskData").document(taskData.id)
@@ -53,7 +55,8 @@ class TaskDataManager: ObservableObject {
         docRef.delete() { error in
             completion(error)
         }
-        await fetchTask()
+        var taskDataArray = await fetchTask()
+        return taskDataArray
     }
     
     // タスク情報を取得して表示するメソッド

@@ -7,30 +7,25 @@
 import SwiftUI
 
 struct StartUpView: View {
-    var body: some View {
-        VStack {
-            BounceAnimationView(text: "Life is RPG", startTime: 0.0)
-                .padding(.top, 30)
-        }
-    }
-}
-
-struct BounceAnimationView: View {
-    let characters: Array<String.Element>
+    let characters: Array<String.Element> = Array("Life is RPG")
     
     @State var offsetYForBounce: CGFloat = -50
     @State var opacity: CGFloat = 0
-    @State var baseTime: Double
-    
-    init(text: String, startTime: Double){
-        self.characters = Array(text)
-        self.baseTime = startTime
-    }
+    @State var baseTime: Double = 0.0
     
     var body: some View {
+        VStack {
+            BounceAnimationView()
+                .padding(.top, 30)
+        }
+    }
+    /// 画面.タスク名
+    @ViewBuilder
+    private func BounceAnimationView() -> some View {
+        
         HStack(spacing:0){
             ForEach(0..<characters.count) { num in
-                Text(String(self.characters[num]))
+                Text(String(characters[num]))
                     .font(.custom("HiraMinProN-W3", fixedSize: 24))
                     .offset(x: 0, y: offsetYForBounce)
                     .opacity(opacity)
@@ -55,3 +50,4 @@ struct BounceAnimationView: View {
         }
     }
 }
+
