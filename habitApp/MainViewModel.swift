@@ -14,8 +14,15 @@ class MainViewModel: ObservableObject {
     private let characterDataManager: CharacterDataManager = CharacterDataManager()
     private let us = UserDefaults.standard
     
+    func onAppear() {
+        Task {
+            await dataGet()
+            await characterCreate()
+        }
+    }
+    
     /// 情報取得メソッド
-    func dataGet() async {
+    private func dataGet() async {
         // ユーザーIDを取得する
         let userId = us.string(forKey: "userId") ?? ""
         
@@ -30,7 +37,7 @@ class MainViewModel: ObservableObject {
     }
     
     /// キャラクター情報新規作成
-    func characterCreate() async {
+    private func characterCreate() async {
         if characterDataArray.count == 0 {
             await characterDataManager.saveCharacter(id: "kumaneko0001", name: "安倍　晋三") { error in
                 if let error = error {

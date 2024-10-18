@@ -13,48 +13,37 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Spacer()
                 chracterView()
-                Spacer()
                 taskButtonView()
-                Spacer()
             }
             .padding()
-            .onAppear {
-                Task {
-                    await viewModel.dataGet()
-                    await viewModel.characterCreate()
-                }
-            }
+            .onAppear(perform: viewModel.onAppear)
         }
     }
     
-    /// キャラクター部分
+    /// キャラクターView
     @ViewBuilder
     private func chracterView() -> some View {
-        // 後々、現在使用中のキャラクターを引数にするようにして、キャラを切り替えられるようにする。
+        // TODO: - 後々、現在使用中のキャラクターを引数にするようにして、キャラを切り替えられるようにする。
         if let characterData = viewModel.characterDataArray.first(where: { $0.id == "kumaneko0001"}) {
             VStack {
                 HStack {
-                    // キャラ名
                     Text(characterData.name)
-                    // キャラクターのレベル
                     Text("Lv.\(levelSet(allExperiencePoint: characterData.allExperiencePoint))")
                 }
                 .font(.title)
-                // キャラクター画像
                 Image(characterData.id)
                     .resizable()
                     .scaledToFit()
                     .frame(width: DeviceModel.width/2)
             }
+            .frame(maxHeight: .infinity)
         }
     }
     
-    /// タスクボタン部分
+    /// タスクボタンView
     @ViewBuilder
     private func taskButtonView() -> some View {
-        // タスク画面遷移ボタン
         NavigationLink(destination: TaskListView()) {
             Text("Task")
                 .padding(.horizontal, 50)
