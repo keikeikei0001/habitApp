@@ -100,12 +100,12 @@
 			children = (
 				B18C6C1F2BC82031000EF3B6 /* GoogleService-Info.plist */,
 				A83A8F842CC2A7EB007A8491 /* App */,
-				B13B16D32BC2BB7600216B6F /* Util */,
 				B13B16C82BC2557700216B6F /* View */,
-				B13B16C72BC2552100216B6F /* Model */,
-				B13B16B72BC254AE00216B6F /* Assets.xcassets */,
 				B1E97E262BE120C4005F8DFB /* ViewModel */,
+				B13B16C72BC2552100216B6F /* Model */,
+				B13B16D32BC2BB7600216B6F /* Util */,
 				B13B16B82BC254AE00216B6F /* Preview Content */,
+				B13B16B72BC254AE00216B6F /* Assets.xcassets */,
 			);
 			path = habitApp;
 			sourceTree = "<group>";
