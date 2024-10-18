@@ -11,7 +11,7 @@ class CharacterDataManager: ObservableObject {
     private var db = Firestore.firestore()
     private let us = UserDefaults.standard
     
-    // キャラクター情報の追加をするメソッド
+    /// キャラクター情報の追加をするメソッド
     func saveCharacter(id: String, name: String, completion: @escaping (Error?) -> Void) async {
         let userId = us.string(forKey: "userId") ?? ""
         
@@ -28,7 +28,7 @@ class CharacterDataManager: ObservableObject {
         }
     }
     
-    // 対象キャラクターの経験値に1を足す
+    /// 対象キャラクターの経験値に1を足す
     func getExperiencePoint(characterData: CharacterData, completion: @escaping (Error?) -> Void) async -> [CharacterData] {
         let userId = us.string(forKey: "userId") ?? ""
         
@@ -43,7 +43,7 @@ class CharacterDataManager: ObservableObject {
         return characterDataArray
     }
     
-    // キャラクター情報を取得して表示するメソッド
+    /// キャラクター情報を取得して表示するメソッド
     func fetchCharacter() async -> [CharacterData] {
         let userId = us.string(forKey: "userId") ?? ""
         

@@ -9,48 +9,47 @@ import SwiftUI
 
 class MainViewModel: ObservableObject {
     @Published var characterDataArray: [CharacterData] = []
-    @Published var isTaskAddView: Bool = false
     
-    private let characterDataManager: CharacterDataManager = CharacterDataManager()
+    private let characterDataManager = CharacterDataManager()
     private let us = UserDefaults.standard
     
+    /// 画面表示時に呼ばれる
     func onAppear() {
-        Task {
-            await dataGet()
-            await characterCreate()
+        if us.string(forKey: "userId") == "" {
+            createUserId()
         }
+        
+        Task {
+            await getCharacterData()
+            if characterDataArray.isEmpty {
+                await createCharacterData()
+            }
+        }
+    }
+    
+    /// ユーザーIDを作成する処理
+    private func createUserId() {
+        let uuid = UUID().uuidString
+        us.set(uuid, forKey: "userId")
     }
     
     /// 情報取得メソッド
-    private func dataGet() async {
-        // ユーザーIDを取得する
-        let userId = us.string(forKey: "userId") ?? ""
-        
-        if userId == "" {
-            us.set("\(UUID())", forKey: "userId")
-        }
-        // キャラクター情報取得
+    private func getCharacterData() async {
         let  newCharacterData = await characterDataManager.fetchCharacter()
-        DispatchQueue.main.async {
-            self.characterDataArray = newCharacterData
-        }
+        characterDataArray = newCharacterData
     }
     
     /// キャラクター情報新規作成
-    private func characterCreate() async {
-        if characterDataArray.count == 0 {
-            await characterDataManager.saveCharacter(id: "kumaneko0001", name: "安倍　晋三") { error in
-                if let error = error {
-                    print("Error: \(error.localizedDescription)")
-                } else {
-                    print("Character create successfully.")
-                }
-            }
-            // キャラクター情報取得
-            let  newCharacterData = await characterDataManager.fetchCharacter()
-            DispatchQueue.main.async {
-                self.characterDataArray = newCharacterData
+    private func createCharacterData() async {
+        await characterDataManager.saveCharacter(id: "kumaneko0001", name: "安倍　晋三") { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                print("Character create successfully.")
             }
         }
+        // キャラクター情報取得
+        let  newCharacterData = await characterDataManager.fetchCharacter()
+        characterDataArray = newCharacterData
     }
 }
