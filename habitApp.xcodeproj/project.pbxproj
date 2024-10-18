@@ -29,7 +29,6 @@
 		B1E97E152BC8B2CB005F8DFB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B1E97E142BC8B2CB005F8DFB /* FirebaseAuth */; };
 		B1E97E172BC8B2D2005F8DFB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B1E97E162BC8B2D2005F8DFB /* FirebaseAnalyticsSwift */; };
 		B1E97E192BC940CD005F8DFB /* TaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E182BC940CD005F8DFB /* TaskDataManager.swift */; };
-		B1E97E1B2BC95469005F8DFB /* StartUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E1A2BC95469005F8DFB /* StartUpView.swift */; };
 		B1E97E282BE1222E005F8DFB /* TaskAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E272BE1222E005F8DFB /* TaskAddViewModel.swift */; };
 		B1E97E2C2BE65E62005F8DFB /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E2B2BE65E62005F8DFB /* TaskListViewModel.swift */; };
 		B1E97E2E2BE898DC005F8DFB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97E2D2BE898DC005F8DFB /* MainViewModel.swift */; };
@@ -55,7 +54,6 @@
 		B18C6C1F2BC82031000EF3B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B1E97E122BC82C55005F8DFB /* ChracterDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChracterDataManager.swift; sourceTree = "<group>"; };
 		B1E97E182BC940CD005F8DFB /* TaskDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataManager.swift; sourceTree = "<group>"; };
-		B1E97E1A2BC95469005F8DFB /* StartUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUpView.swift; sourceTree = "<group>"; };
 		B1E97E272BE1222E005F8DFB /* TaskAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAddViewModel.swift; sourceTree = "<group>"; };
 		B1E97E2B2BE65E62005F8DFB /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
 		B1E97E2D2BE898DC005F8DFB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 				B13B16B42BC254AE00216B6F /* TaskListView.swift */,
 				B13B16C92BC261A000216B6F /* TaskAddView.swift */,
 				B13B16CB2BC26E4000216B6F /* TaskCountView.swift */,
-				B1E97E1A2BC95469005F8DFB /* StartUpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,7 +252,6 @@
 				B1E97E132BC82C55005F8DFB /* ChracterDataManager.swift in Sources */,
 				B1E97E2E2BE898DC005F8DFB /* MainViewModel.swift in Sources */,
 				B1E97E192BC940CD005F8DFB /* TaskDataManager.swift in Sources */,
-				B1E97E1B2BC95469005F8DFB /* StartUpView.swift in Sources */,
 				B1E97E282BE1222E005F8DFB /* TaskAddViewModel.swift in Sources */,
 				B13B16D92BC4227800216B6F /* DeviceModel.swift in Sources */,
 				B13B16BF2BC254AE00216B6F /* DateUtil.swift in Sources */,

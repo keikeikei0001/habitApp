@@ -8,42 +8,22 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var viewModel: MainViewModel = MainViewModel()
+    @StateObject private var viewModel = MainViewModel()
     
     var body: some View {
-        if viewModel.isLoading {
-            // 画面起動時に呼ばれる
-            // StartUpViewに遷移
-            StartUpView().onAppear {
-                Task {
-                    // ユーザーID、キャラクター情報、タスク情報を取得
-                    await viewModel.dataGet()
-                    // キャラクター情報がない場合は、キャラクター情報を新規で作成する
-                    await viewModel.characterCreate()
-                }
-                // 画面が起動してから2.3秒後に[isLoading = false]を代入
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.3) {
-                    withAnimation {
-                        viewModel.isLoading = false
-                    }
-                }
+        NavigationStack {
+            VStack {
+                Spacer()
+                chracterView()
+                Spacer()
+                taskButtonView()
+                Spacer()
             }
-        } else {
-            NavigationStack {
-                VStack {
-                    Spacer()
-                    // キャラクター部分
-                    chracterView()
-                    Spacer()
-                    // ボタン部分
-                    taskButtonView()
-                    Spacer()
-                }
-                .padding()
-                .onAppear {
-                    Task {
-                        await viewModel.dataGet()
-                    }
+            .padding()
+            .onAppear {
+                Task {
+                    await viewModel.dataGet()
+                    await viewModel.characterCreate()
                 }
             }
         }

@@ -10,7 +10,6 @@ import SwiftUI
 class MainViewModel: ObservableObject {
     @Published var characterDataArray: [CharacterData] = []
     @Published var isTaskAddView: Bool = false
-    @Published var isLoading = true
     
     private let characterDataManager: CharacterDataManager = CharacterDataManager()
     private let us = UserDefaults.standard
