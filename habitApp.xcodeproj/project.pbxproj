@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A83A8F832CC2A7E4007A8491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83A8F822CC2A7E4007A8491 /* AppDelegate.swift */; };
 		B13B16BE2BC254AE00216B6F /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16B42BC254AE00216B6F /* TaskListView.swift */; };
 		B13B16BF2BC254AE00216B6F /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16B52BC254AE00216B6F /* DateUtil.swift */; };
 		B13B16C02BC254AE00216B6F /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16B62BC254AE00216B6F /* CharacterData.swift */; };
@@ -36,7 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B13B16962BBD99C500216B6F /* habitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = habitApp.app; path = "/Users/matsudakeisuke/Desktop/clone/habitApp/build/Debug-iphoneos/habitApp.app"; sourceTree = "<absolute>"; };
+		A83A8F812CC2A4C9007A8491 /* habitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = habitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A83A8F822CC2A7E4007A8491 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B13B16B42BC254AE00216B6F /* TaskListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		B13B16B52BC254AE00216B6F /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		B13B16B62BC254AE00216B6F /* CharacterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
@@ -76,10 +78,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A83A8F842CC2A7EB007A8491 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B13B16BA2BC254AE00216B6F /* habitAppApp.swift */,
+				A83A8F822CC2A7E4007A8491 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		B13B168D2BBD99C500216B6F = {
 			isa = PBXGroup;
 			children = (
 				B13B16B32BC254AE00216B6F /* habitApp */,
+				A83A8F812CC2A4C9007A8491 /* habitApp.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				B18C6C1F2BC82031000EF3B6 /* GoogleService-Info.plist */,
-				B13B16BA2BC254AE00216B6F /* habitAppApp.swift */,
+				A83A8F842CC2A7EB007A8491 /* App */,
 				B13B16D32BC2BB7600216B6F /* Util */,
 				B13B16C82BC2557700216B6F /* View */,
 				B13B16C72BC2552100216B6F /* Model */,
@@ -175,7 +187,7 @@
 				B1E97E162BC8B2D2005F8DFB /* FirebaseAnalyticsSwift */,
 			);
 			productName = habitApp;
-			productReference = B13B16962BBD99C500216B6F /* habitApp.app */;
+			productReference = A83A8F812CC2A4C9007A8491 /* habitApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -234,6 +246,7 @@
 			files = (
 				B13B16C32BC254AE00216B6F /* habitAppApp.swift in Sources */,
 				B13B16BE2BC254AE00216B6F /* TaskListView.swift in Sources */,
+				A83A8F832CC2A7E4007A8491 /* AppDelegate.swift in Sources */,
 				B13B16C52BC254AE00216B6F /* TaskData.swift in Sources */,
 				B13B16CA2BC261A000216B6F /* TaskAddView.swift in Sources */,
 				B13B16D22BC2B92C00216B6F /* CharacterUtil.swift in Sources */,
