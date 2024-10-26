@@ -36,7 +36,9 @@ class MainViewModel: ObservableObject {
     /// 情報取得メソッド
     private func getCharacterData() async {
         let  newCharacterData = await characterDataManager.fetchCharacter()
-        characterDataArray = newCharacterData
+        DispatchQueue.main.async {
+            self.characterDataArray = newCharacterData
+        }
     }
     
     /// キャラクター情報新規作成
@@ -50,6 +52,8 @@ class MainViewModel: ObservableObject {
         }
         // キャラクター情報取得
         let  newCharacterData = await characterDataManager.fetchCharacter()
-        characterDataArray = newCharacterData
+        DispatchQueue.main.async {
+            self.characterDataArray = newCharacterData
+        }
     }
 }

@@ -1,0 +1,8 @@
+# macOSのシステムファイル
+.DS_Store
+
+# Xcodeのユーザー設定ファイル
+*.xcuserstate
+
+# ビルドファイル
+build/
