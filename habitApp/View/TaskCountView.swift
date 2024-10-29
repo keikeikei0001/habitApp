@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TaskCountView: View {
     @StateObject var viewModel: TaskCountViewModel
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack {
@@ -35,6 +36,7 @@ struct TaskCountView: View {
                 Task {
                     await viewModel.taskDelete()
                 }
+                dismiss()
             } label: {
                 Text("delete")
             }
@@ -65,7 +67,7 @@ struct TaskCountView: View {
             Text("Done")
                 .padding(.horizontal, 50)
                 .padding(.vertical)
-                .background(viewModel.buttonEnable ? .blue :.gray)
+                .background(viewModel.buttonEnable ? .blue : .gray)
                 .foregroundStyle(.white)
                 .font(.title)
                 .cornerRadius(10)
@@ -73,5 +75,6 @@ struct TaskCountView: View {
         .disabled(!viewModel.buttonEnable)
     }
 }
+
 
 
