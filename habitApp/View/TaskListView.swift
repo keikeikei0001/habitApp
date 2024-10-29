@@ -14,7 +14,7 @@ struct TaskListView: View {
         // タスクテーブル
         taskTableView()
             .toolbar(content: toolbarContent)
-            .onAppear(perform: viewModel.fetchTaskData)
+            .onAppear(perform: viewModel.reloadTask)
     }
     
     @ToolbarContentBuilder
@@ -27,7 +27,7 @@ struct TaskListView: View {
             } label: {
                 Image(systemName: "plus")
             }
-            .sheet(isPresented: $viewModel.isTaskAddView, onDismiss: viewModel.fetchTaskData) {
+            .sheet(isPresented: $viewModel.isTaskAddView, onDismiss: viewModel.reloadTask) {
                 TaskAddView(isTaskAddView: $viewModel.isTaskAddView)
             }
         }

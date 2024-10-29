@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+import SwiftUI
+
 class TaskCountViewModel: ObservableObject {
     @Published var buttonEnable: Bool = true
     @Published var taskData: TaskData
-    @Environment(\.dismiss) private var dismiss
+    private var dismissAction: (() -> Void)?
     
     private let taskDataManager: TaskDataManager = TaskDataManager()
     private let characterDataManager: CharacterDataManager = CharacterDataManager()
@@ -20,21 +22,22 @@ class TaskCountViewModel: ObservableObject {
         self.taskData = taskData
     }
     
+    /// `dismiss`アクションを設定
+    func setDismissAction(_ action: @escaping () -> Void) {
+        dismissAction = action
+    }
+    
     /// タスク完了時の処理
     func taskDone() async {
-        // 対象のタスクの継続回数に1を足す
-        taskData.continationCount += 1
-        await taskDataManager.doneTask(taskData: taskData) { error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-            } else {
-                print("TaskData update successfully.")
-            }
+        DispatchQueue.main.async {
+            self.taskData.continationCount += 1
         }
-        var characterDataArray = await characterDataManager.fetchCharacter()
+        
+        let _ = await taskDataManager.doneTask(taskData: taskData)
+        let characterDataArray = await characterDataManager.fetchCharacter()
+        
         if let characterData = characterDataArray.first(where: {$0.id == "kumaneko0001"}) {
-            // 対象キャラクターの総保有経験値に1を足す
-            await characterDataManager.getExperiencePoint(characterData: characterData) { error in
+            _ = await characterDataManager.getExperiencePoint(characterData: characterData) { error in
                 if let error = error {
                     print("Error: \(error.localizedDescription)")
                 } else {
@@ -42,25 +45,23 @@ class TaskCountViewModel: ObservableObject {
                 }
             }
         }
-        // タスク完了ボタンを非活性
-        buttonEnable.toggle()
+        
+        DispatchQueue.main.async {
+            self.buttonEnable.toggle()
+        }
     }
     
     /// タスク削除時の処理
     func taskDelete() async {
-        // 遷移元に戻る
-        dismiss()
-        await taskDataManager.deleteTask(taskData: taskData) { error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-            } else {
-                print("taskData delete successfully.")
-            }
+        // Viewのdismissアクションを呼び出す
+        DispatchQueue.main.async {
+            self.dismissAction?()
         }
+        
+        let _ = await taskDataManager.deleteTask(taskData: taskData)
     }
     
     func taskDoneButton() {
-        // タスクを1回でも行い、タスク情報.最終完了日が今日の場合、タスク完了ボタンを非活性にする
         if taskData.lastDoneDate == now && taskData.continationCount != 0 {
             buttonEnable = false
         }

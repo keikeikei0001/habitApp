@@ -12,50 +12,63 @@ class TaskDataManager: ObservableObject {
     private let us = UserDefaults.standard
     
     // タスク情報の追加をするメソッド
-    func savetask(taskName: String, completion: @escaping (Error?) -> Void) async -> [TaskData] {
+    func saveTask(taskName: String) async -> [TaskData] {
         let userId = us.string(forKey: "userId") ?? ""
         
         let docRef = db.collection("user/\(userId)/taskData").document()
         
         let taskData = TaskData(id: docRef.documentID, taskName: taskName, continationCount: 0, lastDoneDate: Date().zeroclock, createDate: Date().zeroclock)
         
-        docRef.setData([
-            "id": taskData.id,
-            "taskName": taskData.taskName,
-            "continationCount": taskData.continationCount,
-            "lastDoneDate": taskData.lastDoneDate,
-            "createDate": taskData.createDate
-        ]) { error in
-            completion(error)
+        // 非同期のsetDataを使用
+        do {
+            try await docRef.setData([
+                "id": taskData.id,
+                "taskName": taskData.taskName,
+                "continationCount": taskData.continationCount,
+                "lastDoneDate": taskData.lastDoneDate,
+                "createDate": taskData.createDate
+            ])
+        } catch {
+            print("Error saving task: \(error)")
         }
-        var taskDataArray = await fetchTask()
+        
+        let taskDataArray = await fetchTask()
         return taskDataArray
     }
     
     // タスクを完了した際の処理
-    func doneTask(taskData: TaskData, completion: @escaping (Error?) -> Void) async -> [TaskData] {
+    func doneTask(taskData: TaskData) async -> [TaskData] {
         let userId = us.string(forKey: "userId") ?? ""
         
         let docRef = db.collection("user/\(userId)/taskData").document(taskData.id)
-        docRef.updateData([
-            "continationCount": taskData.continationCount
-        ]) { error in
-            completion(error)
+        
+        // 非同期のupdateDataを使用
+        do {
+            try await docRef.updateData([
+                "continationCount": taskData.continationCount
+            ])
+        } catch {
+            print("Error updating task: \(error)")
         }
-        var taskDataArray = await fetchTask()
+        
+        let taskDataArray = await fetchTask()
         return taskDataArray
     }
     
     // タスク削除時の処理
-    func deleteTask(taskData: TaskData, completion: @escaping (Error?) -> Void) async -> [TaskData] {
+    func deleteTask(taskData: TaskData) async -> [TaskData] {
         let userId = us.string(forKey: "userId") ?? ""
         
         let docRef = db.collection("user/\(userId)/taskData").document(taskData.id)
         
-        docRef.delete() { error in
-            completion(error)
+        // 非同期のdeleteを使用
+        do {
+            try await docRef.delete()
+        } catch {
+            print("Error deleting task: \(error)")
         }
-        var taskDataArray = await fetchTask()
+        
+        let taskDataArray = await fetchTask()
         return taskDataArray
     }
     
@@ -65,16 +78,22 @@ class TaskDataManager: ObservableObject {
         
         var taskDataArray: [TaskData] = []
         
-        db.collection("user/\(userId)/taskData").getDocuments { snapshot, error in
-            if let error = error {
-                print("Error getting taskData: \(error)")
-            } else {
-                taskDataArray = snapshot?.documents.map {
-                    TaskData(id: $0.documentID, taskName: $0.data()["taskName"] as? String ?? "", continationCount: $0.data()["continationCount"] as? Int ?? 0, lastDoneDate: $0.data()["lastDoneDate"] as? Date ?? Date().zeroclock, createDate: $0.data()["createDate"] as? Date ?? Date().zeroclock)
-                } ?? []
+        do {
+            let snapshot = try await db.collection("user/\(userId)/taskData").getDocuments()
+            taskDataArray = snapshot.documents.map {
+                TaskData(
+                    id: $0.documentID,
+                    taskName: $0.data()["taskName"] as? String ?? "",
+                    continationCount: $0.data()["continationCount"] as? Int ?? 0,
+                    lastDoneDate: $0.data()["lastDoneDate"] as? Date ?? Date().zeroclock,
+                    createDate: $0.data()["createDate"] as? Date ?? Date().zeroclock
+                )
             }
+        } catch {
+            print("Error getting taskData: \(error)")
         }
         return taskDataArray
     }
 }
+
 

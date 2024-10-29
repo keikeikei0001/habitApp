@@ -11,15 +11,19 @@ class TaskListViewModel: ObservableObject {
     @Published var isTaskAddView: Bool = false
     @Published var tableTaskData: [TaskData] = []
     
-    private let taskDataManager: TaskDataManager = TaskDataManager()
+    private let taskDataManager = TaskDataManager()
     
-    func fetchTaskData() {
+    func fetchTaskData() async {
+        let  newTaskData = await taskDataManager.fetchTask()
+        DispatchQueue.main.async {
+            // キャラクター情報取得
+            self.tableTaskData = newTaskData
+        }
+    }
+    /// 画面表示時に呼ばれる
+    func reloadTask() {
         Task {
-            let  newTaskData = await taskDataManager.fetchTask()
-            DispatchQueue.main.async {
-                // キャラクター情報取得
-                self.tableTaskData = newTaskData
-            }
+            await fetchTaskData()
         }
     }
 }
