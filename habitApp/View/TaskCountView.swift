@@ -14,17 +14,13 @@ struct TaskCountView: View {
     var body: some View {
         VStack {
             Spacer()
-            // 画面.タスク名
             taskNameView()
             Spacer()
-            // 画面.継続回数
             taskCountView()
             Spacer()
-            // 画面.タスクカウントボタン
             taskCountButtonView()
             Spacer()
         }
-        .onAppear(perform: viewModel.taskDoneButton)
         .toolbar(content: toolbarContent)
     }
     
@@ -33,9 +29,7 @@ struct TaskCountView: View {
         // ナビゲーションの右側にDeleteボタンを配置
         ToolbarItem(placement: .topBarTrailing) {
             Button {
-                Task {
-                    await viewModel.taskDelete()
-                }
+                viewModel.handleDeleteButtonTap()
                 dismiss()
             } label: {
                 Text("delete")
@@ -59,20 +53,16 @@ struct TaskCountView: View {
     @ViewBuilder
     private func taskCountButtonView() -> some View {
         // タスク完了ボタン
-        Button {
-            Task {
-                await viewModel.taskDone()
-            }
-        } label: {
+        Button(action: viewModel.handleTaskCountButtonTap) {
             Text("Done")
                 .padding(.horizontal, 50)
                 .padding(.vertical)
-                .background(viewModel.buttonEnable ? .blue : .gray)
+                .background(viewModel.enableTaskCountButton ? .blue : .gray)
                 .foregroundStyle(.white)
                 .font(.title)
                 .cornerRadius(10)
         }
-        .disabled(!viewModel.buttonEnable)
+        .disabled(!viewModel.enableTaskCountButton)
     }
 }
 

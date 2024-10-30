@@ -8,25 +8,36 @@
 import SwiftUI
 
 class TaskCountViewModel: ObservableObject {
-    @Published var buttonEnable: Bool = true
     @Published var taskData: TaskData
-    private var dismissAction: (() -> Void)?
     
-    private let taskDataManager: TaskDataManager = TaskDataManager()
-    private let characterDataManager: CharacterDataManager = CharacterDataManager()
-    private let now = Date().zeroclock
+    private let taskDataManager = TaskDataManager()
+    private let characterDataManager = CharacterDataManager()
     
     init(taskData: TaskData) {
         self.taskData = taskData
     }
     
-    /// `dismiss`アクションを設定
-    func setDismissAction(_ action: @escaping () -> Void) {
-        dismissAction = action
+    /// タスクボタンが有効かどうか
+    var enableTaskCountButton: Bool {
+        taskData.lastDoneDate == Date().zeroclock && taskData.continationCount != 0
+    }
+    
+    /// 削除ボタンタップ
+    func handleDeleteButtonTap() {
+        Task {
+            await deleteTask()
+        }
+    }
+    
+    /// タスク完了ボタンタップ
+    func handleTaskCountButtonTap() {
+        Task {
+            await updateContinationCount()
+        }
     }
     
     /// タスク完了時の処理
-    func taskDone() async {
+    private func updateContinationCount() async {
         DispatchQueue.main.async {
             self.taskData.continationCount += 1
         }
@@ -43,25 +54,10 @@ class TaskCountViewModel: ObservableObject {
                 }
             }
         }
-        
-        DispatchQueue.main.async {
-            self.buttonEnable.toggle()
-        }
     }
     
     /// タスク削除時の処理
-    func taskDelete() async {
-        // Viewのdismissアクションを呼び出す
-        DispatchQueue.main.async {
-            self.dismissAction?()
-        }
-        
-        let _ = await taskDataManager.deleteTask(taskData: taskData)
-    }
-    
-    func taskDoneButton() {
-        if taskData.lastDoneDate == now && taskData.continationCount != 0 {
-            buttonEnable = false
-        }
+    func deleteTask() async {
+        _ = await taskDataManager.deleteTask(taskData: taskData)
     }
 }
