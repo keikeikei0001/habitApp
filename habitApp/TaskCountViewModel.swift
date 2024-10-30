@@ -32,16 +32,13 @@ class TaskCountViewModel: ObservableObject {
     /// タスク完了ボタンタップ
     func handleTaskCountButtonTap() {
         Task {
-            await updateContinationCount()
+            await updateContinationCountForFirestore()
         }
     }
     
-    /// タスク完了時の処理
-    private func updateContinationCount() async {
-        DispatchQueue.main.async {
-            self.taskData.continationCount += 1
-        }
-        
+    /// タスク完了時に1プラスしたタスクを保存する処理
+    private func updateContinationCountForFirestore() async {
+        await updateContinationCount()
         let _ = await taskDataManager.doneTask(taskData: taskData)
         let characterDataArray = await characterDataManager.fetchCharacter()
         
@@ -54,6 +51,12 @@ class TaskCountViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    /// タスク完了時に1プラスする処理
+    @MainActor
+    private func updateContinationCount() async {
+        taskData.continationCount += 1
     }
     
     /// タスク削除時の処理

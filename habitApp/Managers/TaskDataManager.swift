@@ -43,6 +43,7 @@ class TaskDataManager: ObservableObject {
         let docRef = db.collection("user/\(userId)/taskData").document(taskData.id)
         
         // 非同期のupdateDataを使用
+        print("🟥\(taskData.continationCount)")
         do {
             try await docRef.updateData([
                 "continationCount": taskData.continationCount
