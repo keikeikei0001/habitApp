@@ -15,7 +15,7 @@ class MainViewModel: ObservableObject {
     
     /// 画面表示時に呼ばれる
     func handleOnAppear() {
-        if let userId = us.string(forKey: "userId") {
+        if let _ = us.string(forKey: "userId") {
             getCharacterData()
         } else {
             createUser()
