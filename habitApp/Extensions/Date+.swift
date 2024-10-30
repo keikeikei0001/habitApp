@@ -1,19 +1,11 @@
 //
-//  Data.swift
-//  habit
+//  Date+.swift
+//  habitApp
 //
-//  Created by 松田圭右 on 2024/02/12.
+//  Created by RikutoSato on 2024/10/30.
 //
 
 import Foundation
-
-extension TimeZone {
-    static let japan = TimeZone(identifier: "Asia/Tokyo")!
-}
-
-extension Locale {
-    static let japan = Locale(identifier: "ja_JP")
-}
 
 extension Date {
     // 日本時間に修正
@@ -42,4 +34,3 @@ extension Date {
         return calendar.date(from: comp)!
     }
 }
-
