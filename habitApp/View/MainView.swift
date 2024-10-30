@@ -38,6 +38,8 @@ struct MainView: View {
                     .frame(width: DeviceModel.width/2)
             }
             .frame(maxHeight: .infinity)
+        } else {
+            ProgressView()
         }
     }
     
