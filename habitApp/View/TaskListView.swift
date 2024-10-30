@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskListView: View {
-    @StateObject var viewModel = TaskListViewModel()
+    @StateObject private var viewModel = TaskListViewModel()
     
     var body: some View {
         // タスクテーブル

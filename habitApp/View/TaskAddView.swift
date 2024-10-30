@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct TaskAddView: View {
-    @StateObject var viewModel: TaskAddViewModel = TaskAddViewModel()
+    @StateObject private var viewModel = TaskAddViewModel()
     @FocusState private var isFocused: Bool
     @Binding var isTaskAddView: Bool
     
     var body: some View {
         VStack {
             Spacer()
-            // タスク名入力用テキストフィールド
             taskTextFieldView()
             Spacer()
-            // タスク追加ボタン
             taskAddButtonView()
             Spacer()
         }
@@ -38,11 +36,8 @@ struct TaskAddView: View {
     @ViewBuilder
     private func taskAddButtonView() -> some View {
         Button {
-            Task {
-                await viewModel.taskAdd()
-                isFocused = false
-                viewModel.isTaskAddView = false
-            }
+            viewModel.handleAddButtonTap()
+            isFocused = false
         } label: {
             Text("Create")
                 .padding(.horizontal, 50)

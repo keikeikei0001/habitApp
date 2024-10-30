@@ -13,8 +13,16 @@ class TaskAddViewModel: ObservableObject {
     
     private let taskDataManager: TaskDataManager = TaskDataManager()
     
-    /// タスク追加ボタン押下時
-    func taskAdd() async {
+    /// 追加ボタンタップ時
+    func handleAddButtonTap() {
+        Task {
+            await addTask()
+            isTaskAddView = false
+        }
+    }
+    
+    /// タスク追加処理
+    private func addTask() async {
         // タスク追加処理
         let _ = await taskDataManager.saveTask(taskName: inputTaskName)
     }
