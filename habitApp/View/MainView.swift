@@ -17,7 +17,7 @@ struct MainView: View {
                 taskButtonView()
             }
             .padding()
-            .onAppear(perform: viewModel.onAppear)
+            .onAppear(perform: viewModel.handleOnAppear)
         }
     }
     

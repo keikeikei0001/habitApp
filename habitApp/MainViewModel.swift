@@ -14,30 +14,34 @@ class MainViewModel: ObservableObject {
     private let us = UserDefaults.standard
     
     /// 画面表示時に呼ばれる
-    func onAppear() {
-        if us.string(forKey: "userId") == "" {
-            createUserId()
+    func handleOnAppear() {
+        if let userId = us.string(forKey: "userId") {
+            getCharacterData()
+        } else {
+            createUser()
         }
-        
+    }
+    
+    /// ユーザーを作成する処理
+    private func createUser() {
         Task {
-            await getCharacterData()
-            if characterDataArray.isEmpty {
-                await createCharacterData()
-            }
+            await createUserId()
+            await createCharacterData()
         }
     }
     
     /// ユーザーIDを作成する処理
-    private func createUserId() {
-        let uuid = UUID().uuidString
-        us.set(uuid, forKey: "userId")
+    private func createUserId() async {
+        us.set(UUID().uuidString, forKey: "userId")
     }
     
-    /// 情報取得メソッド
-    private func getCharacterData() async {
-        let  newCharacterData = await characterDataManager.fetchCharacter()
-        DispatchQueue.main.async {
-            self.characterDataArray = newCharacterData
+    /// キャラクター情報を取得する処理
+    private func getCharacterData() {
+        Task {
+            let  newCharacterData = await characterDataManager.fetchCharacter()
+            DispatchQueue.main.async {
+                self.characterDataArray = newCharacterData
+            }
         }
     }
     
@@ -50,10 +54,6 @@ class MainViewModel: ObservableObject {
                 print("Character create successfully.")
             }
         }
-        // キャラクター情報取得
-        let  newCharacterData = await characterDataManager.fetchCharacter()
-        DispatchQueue.main.async {
-            self.characterDataArray = newCharacterData
-        }
+        getCharacterData()
     }
 }
