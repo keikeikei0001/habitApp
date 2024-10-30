@@ -57,12 +57,12 @@ struct TaskCountView: View {
             Text("Done")
                 .padding(.horizontal, 50)
                 .padding(.vertical)
-                .background(viewModel.enableTaskCountButton ? .blue : .gray)
+                .background(viewModel.enableTaskCountButton ? .gray : .blue)
                 .foregroundStyle(.white)
                 .font(.title)
                 .cornerRadius(10)
         }
-        .disabled(!viewModel.enableTaskCountButton)
+        .disabled(viewModel.enableTaskCountButton)
     }
 }
 
