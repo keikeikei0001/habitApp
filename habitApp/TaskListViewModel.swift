@@ -26,4 +26,9 @@ class TaskListViewModel: ObservableObject {
             await fetchTaskData()
         }
     }
+    
+    /// ナビゲーションの右側のプラスボタンタップ
+    func handleAddButtonTap() {
+        isTaskAddView = true
+    }
 }

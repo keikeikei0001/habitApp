@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskListView: View {
-    @StateObject var viewModel: TaskListViewModel = TaskListViewModel()
+    @StateObject var viewModel = TaskListViewModel()
     
     var body: some View {
         // タスクテーブル
@@ -22,9 +22,7 @@ struct TaskListView: View {
         // ナビゲーションの右側に＋ボタンを配置
         // ボタン押下時、TaskAddViewに遷移する
         ToolbarItem(placement: .topBarTrailing) {
-            Button {
-                viewModel.isTaskAddView = true
-            } label: {
+            Button(action: viewModel.handleAddButtonTap) {
                 Image(systemName: "plus")
             }
             .sheet(isPresented: $viewModel.isTaskAddView, onDismiss: viewModel.reloadTask) {
