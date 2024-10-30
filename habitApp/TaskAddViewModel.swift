@@ -11,7 +11,7 @@ class TaskAddViewModel: ObservableObject {
     @Published var isTaskAddView: Bool = false
     @Published var inputTaskName = ""
     
-    private let taskDataManager: TaskDataManager = TaskDataManager()
+    private let taskDataManager = TaskDataManager()
     
     /// 追加ボタンタップ時
     func handleAddButtonTap() {

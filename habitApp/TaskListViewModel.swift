@@ -13,13 +13,6 @@ class TaskListViewModel: ObservableObject {
     
     private let taskDataManager = TaskDataManager()
     
-    func fetchTaskData() async {
-        let  newTaskData = await taskDataManager.fetchTask()
-        DispatchQueue.main.async {
-            // キャラクター情報取得
-            self.tableTaskData = newTaskData
-        }
-    }
     /// 画面表示時に呼ばれる
     func reloadTask() {
         Task {
@@ -30,5 +23,13 @@ class TaskListViewModel: ObservableObject {
     /// ナビゲーションの右側のプラスボタンタップ
     func handleAddButtonTap() {
         isTaskAddView = true
+    }
+    
+    private func fetchTaskData() async {
+        let  newTaskData = await taskDataManager.fetchTask()
+        DispatchQueue.main.async {
+            // キャラクター情報取得
+            self.tableTaskData = newTaskData
+        }
     }
 }
