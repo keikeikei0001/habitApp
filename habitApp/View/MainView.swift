@@ -29,7 +29,7 @@ struct MainView: View {
             VStack {
                 HStack {
                     Text(characterData.name)
-                    Text("Lv.\(levelSet(allExperiencePoint: characterData.allExperiencePoint))")
+                    Text("Lv.\(characterData.getLevel)")
                 }
                 .font(.title)
                 Image(characterData.id)

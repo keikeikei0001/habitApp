@@ -20,7 +20,6 @@
 		B13B16C62BC254AE00216B6F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16BD2BC254AE00216B6F /* MainView.swift */; };
 		B13B16CA2BC261A000216B6F /* TaskAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16C92BC261A000216B6F /* TaskAddView.swift */; };
 		B13B16CC2BC26E4000216B6F /* TaskCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16CB2BC26E4000216B6F /* TaskCountView.swift */; };
-		B13B16D22BC2B92C00216B6F /* CharacterUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16D12BC2B92C00216B6F /* CharacterUtil.swift */; };
 		B13B16D92BC4227800216B6F /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B16D82BC4227800216B6F /* DeviceModel.swift */; };
 		B18C6C1C2BC813EC000EF3B6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B18C6C1B2BC813EC000EF3B6 /* FirebaseAnalytics */; };
 		B18C6C202BC82031000EF3B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B18C6C1F2BC82031000EF3B6 /* GoogleService-Info.plist */; };
@@ -51,7 +50,6 @@
 		B13B16BD2BC254AE00216B6F /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B13B16C92BC261A000216B6F /* TaskAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAddView.swift; sourceTree = "<group>"; };
 		B13B16CB2BC26E4000216B6F /* TaskCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCountView.swift; sourceTree = "<group>"; };
-		B13B16D12BC2B92C00216B6F /* CharacterUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUtil.swift; sourceTree = "<group>"; };
 		B13B16D82BC4227800216B6F /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		B18C6C1F2BC82031000EF3B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B1E97E122BC82C55005F8DFB /* ChracterDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChracterDataManager.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 		B13B16D32BC2BB7600216B6F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				B13B16D12BC2B92C00216B6F /* CharacterUtil.swift */,
 				B1E97E182BC940CD005F8DFB /* TaskDataManager.swift */,
 				B1E97E122BC82C55005F8DFB /* ChracterDataManager.swift */,
 			);
@@ -257,7 +254,6 @@
 				A83A8F832CC2A7E4007A8491 /* AppDelegate.swift in Sources */,
 				B13B16C52BC254AE00216B6F /* TaskData.swift in Sources */,
 				B13B16CA2BC261A000216B6F /* TaskAddView.swift in Sources */,
-				B13B16D22BC2B92C00216B6F /* CharacterUtil.swift in Sources */,
 				B13B16C62BC254AE00216B6F /* MainView.swift in Sources */,
 				B1E97E132BC82C55005F8DFB /* ChracterDataManager.swift in Sources */,
 				B1E97E2E2BE898DC005F8DFB /* MainViewModel.swift in Sources */,

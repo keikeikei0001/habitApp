@@ -15,4 +15,9 @@ struct CharacterData: Identifiable {
     var name: String
     /// 総保有経験値
     var allExperiencePoint: Int
+    
+    /// 総保有経験値からレベルを計算
+    var getLevel: Int {
+        Int(floor(Double(allExperiencePoint / 5))) + 1
+    }
 }
