@@ -7,13 +7,12 @@
 
 import FirebaseFirestore
 
-// キャラクター情報
+/// キャラクター情報
 struct CharacterData: Identifiable {
-    // キャラクターID
+    /// キャラクターID
     var id: String
-    // キャラクター名
+    /// キャラクター名
     var name: String
-    // 総保有経験値
-    var allExperiencePoint:Int
+    /// 総保有経験値
+    var allExperiencePoint: Int
 }
-

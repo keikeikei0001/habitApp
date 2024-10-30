@@ -8,7 +8,6 @@
 import SwiftUI
 
 class DeviceModel {
-    
     private static var window: UIWindowScene? {
         return UIApplication.shared.connectedScenes.first as? UIWindowScene
     }

@@ -6,16 +6,16 @@
 //
 import Foundation
 
-// タスク情報
+/// タスク情報
 struct TaskData: Identifiable {
-    // タスクID
+    /// タスクID
     var id: String
-    // タスク名
+    /// タスク名
     var taskName: String
-    // 継続回数
+    /// 継続回数
     var continationCount: Int
-    // 最終完了日
-    var lastDoneDate:Date
-    // 作成日
+    /// 最終完了日
+    var lastDoneDate: Date
+    /// 作成日
     var createDate: Date 
 }
