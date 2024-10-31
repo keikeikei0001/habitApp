@@ -17,7 +17,9 @@ class TaskAddViewModel: ObservableObject {
     func handleAddButtonTap() {
         Task {
             await addTask()
-            isTaskAddView = false
+            await MainActor.run {  // メインスレッドで更新
+                isTaskAddView = false
+            }
         }
     }
     
