@@ -11,6 +11,7 @@ struct TaskAddView: View {
     @StateObject private var viewModel = TaskAddViewModel()
     @FocusState private var isFocused: Bool
     @Binding var isTaskAddView: Bool
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack {
@@ -38,6 +39,7 @@ struct TaskAddView: View {
         Button {
             viewModel.handleAddButtonTap()
             isFocused = false
+            dismiss()
         } label: {
             Text("Create")
                 .padding(.horizontal, 50)

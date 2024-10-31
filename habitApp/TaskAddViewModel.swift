@@ -14,12 +14,11 @@ class TaskAddViewModel: ObservableObject {
     private let taskDataManager = TaskDataManager()
     
     /// 追加ボタンタップ時
+    @MainActor
     func handleAddButtonTap() {
         Task {
             await addTask()
-            await MainActor.run {  // メインスレッドで更新
-                isTaskAddView = false
-            }
+            isTaskAddView = false
         }
     }
     

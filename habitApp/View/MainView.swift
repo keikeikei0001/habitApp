@@ -29,7 +29,7 @@ struct MainView: View {
             VStack {
                 HStack {
                     Text(characterData.name)
-                    Text("Lv.\(characterData.getLevel)")
+                    Text("Lv.\(characterData.level)")
                 }
                 .font(.title)
                 Image(characterData.id)
