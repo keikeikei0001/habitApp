@@ -29,7 +29,6 @@ struct TaskAddView: View {
     /// タスクセクション選択用セグメントコントロール
     @ViewBuilder
     private func taskSectionSwichView() -> some View {
-        
         Picker("taskSection", selection: $viewModel.selectedtaskSection) {
             ForEach(TaskAddViewModel.taskSections.allCases) {
                 Text($0.rawValue).tag($0)
@@ -42,7 +41,6 @@ struct TaskAddView: View {
     /// タスク名入力用テキストフィールド
     @ViewBuilder
     private func taskTextFieldView() -> some View {
-        // 画面.タスク入力テキストフィールド
         TextField("タスク名を入力してください", text: $viewModel.inputTaskName)
             .textFieldStyle(.roundedBorder)
             .padding()
@@ -60,10 +58,11 @@ struct TaskAddView: View {
             Text("Create")
                 .padding(.horizontal, 50)
                 .padding(.vertical)
-                .background(.blue)
+                .background(viewModel.inputTaskName.isEmpty ? Color.gray : Color.blue)
                 .foregroundStyle(.white)
                 .font(.title)
                 .cornerRadius(10)
         }
+        .disabled(viewModel.inputTaskName.isEmpty) // タスク名が空のときボタンを無効化
     }
 }
