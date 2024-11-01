@@ -15,25 +15,19 @@ struct TaskListView: View {
     var body: some View {
         NavigationStack {
             taskTableView()
-                .toolbar(content: toolbarContent)
                 .onAppear(perform: viewModel.reloadTask)
                 .navigationDestination(isPresented: $isTaskSelected) {
                     if let taskData = selectedTask {
                         TaskCountView(viewModel: TaskCountViewModel(taskData: taskData))
                     }
                 }
-        }
-    }
-    
-    @ToolbarContentBuilder
-    private func toolbarContent() -> some ToolbarContent {
-        ToolbarItem(placement: .topBarTrailing) {
-            Button(action: viewModel.handleAddButtonTap) {
-                Image(systemName: "plus")
-            }
-            .sheet(isPresented: $viewModel.isTaskAddView, onDismiss: viewModel.reloadTask) {
-                TaskAddView(isTaskAddView: $viewModel.isTaskAddView)
-            }
+                .overlay(alignment: .bottomTrailing) {
+                    FloatingActionButtonView()
+                        .padding()
+                        .sheet(isPresented: $viewModel.isTaskAddView, onDismiss: viewModel.reloadTask) {
+                            TaskAddView(isTaskAddView: $viewModel.isTaskAddView)
+                        }
+                }
         }
     }
     
@@ -78,6 +72,22 @@ struct TaskListView: View {
             }
         }
     }
+    
+    /// 追加ボタン
+    @ViewBuilder
+    private func FloatingActionButtonView() -> some View {
+        Button(action: viewModel.handleAddButtonTap) {
+            Image(systemName: "plus")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 24, height: 24)
+                .foregroundColor(.white)
+                .padding(18)
+                .background(Color.blue)
+                .clipShape(Circle())
+                .shadow(radius: 10)
+        }
+        .frame(width: 66, height: 66)
+    }
 }
-
 
