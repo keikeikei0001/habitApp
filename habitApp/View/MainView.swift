@@ -28,8 +28,15 @@ struct MainView: View {
         if let characterData = viewModel.characterDataArray.first(where: { $0.id == "kumaneko0001"}) {
             VStack {
                 HStack {
+                    Spacer()
                     Text(characterData.name)
-                    Text("Lv.\(characterData.level)")
+                    Spacer()
+                    VStack {
+                        Text("Lv.\(characterData.levelInfo.0)")
+                        Text("\(characterData.levelInfo.1)  /  \(characterData.levelInfo.2)")
+                            .font(.system(size: 20))
+                    }
+                    Spacer()
                 }
                 .font(.title)
                 Image(characterData.id)
