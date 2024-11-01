@@ -10,8 +10,16 @@ import SwiftUI
 class TaskListViewModel: ObservableObject {
     @Published var isTaskAddView: Bool = false
     @Published var tableTaskData: [TaskData] = []
-    
+    let sectionTitles = ["朝", "昼", "夜", "フリー"]
     private let taskDataManager = TaskDataManager()
+    
+    var groupedTaskData: [String: [TaskData]] {
+        var groupedData = Dictionary(grouping: tableTaskData, by: { $0.taskSection })
+        for title in sectionTitles {
+            groupedData[title] = groupedData[title] ?? []
+        }
+        return groupedData
+    }
     
     /// 画面表示時に呼ばれる
     func reloadTask() {
