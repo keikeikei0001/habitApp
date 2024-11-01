@@ -51,6 +51,8 @@ struct TaskListView: View {
             Spacer()
             // タスク情報.継続回数
             Text("\(taskData.continationCount)")
+            // タスク情報.復帰回数
+            Text("\(taskData.recoveryCount)")
         }
     }
 }

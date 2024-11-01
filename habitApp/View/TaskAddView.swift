@@ -16,11 +16,27 @@ struct TaskAddView: View {
     var body: some View {
         VStack {
             Spacer()
+            taskSectionSwichView()
+            Spacer()
             taskTextFieldView()
+            Spacer()
             Spacer()
             taskAddButtonView()
             Spacer()
         }
+    }
+    
+    /// タスクセクション選択用セグメントコントロール
+    @ViewBuilder
+    private func taskSectionSwichView() -> some View {
+        
+        Picker("taskSection", selection: $viewModel.selectedtaskSection) {
+            ForEach(TaskAddViewModel.taskSections.allCases) {
+                Text($0.rawValue).tag($0)
+            }
+        }
+        .pickerStyle(.segmented)
+        .padding()
     }
     
     /// タスク名入力用テキストフィールド
@@ -37,7 +53,7 @@ struct TaskAddView: View {
     @ViewBuilder
     private func taskAddButtonView() -> some View {
         Button {
-            viewModel.handleAddButtonTap()
+            viewModel.handleAddButtonTap(taskSection: viewModel.selectedtaskSection.rawValue)
             isFocused = false
             dismiss()
         } label: {

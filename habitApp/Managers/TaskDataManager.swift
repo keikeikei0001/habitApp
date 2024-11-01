@@ -12,12 +12,12 @@ class TaskDataManager: ObservableObject {
     private let us = UserDefaults.standard
     
     // タスク情報の追加をするメソッド
-    func saveTask(taskName: String) async -> [TaskData] {
+    func saveTask(taskName: String, taskSection: String) async -> [TaskData] {
         let userId = us.string(forKey: "userId") ?? ""
         
         let docRef = db.collection("user/\(userId)/taskData").document()
         
-        let taskData = TaskData(id: docRef.documentID, taskName: taskName, continationCount: 0, lastDoneDate: Date().zeroclock, createDate: Date().zeroclock)
+        let taskData = TaskData(id: docRef.documentID, taskName: taskName, continationCount: 0, recoveryCount: 0, lastDoneDate: Date().zeroclock, createDate: Date().zeroclock, taskSection: taskSection)
         
         // 非同期のsetDataを使用
         do {
@@ -25,8 +25,10 @@ class TaskDataManager: ObservableObject {
                 "id": taskData.id,
                 "taskName": taskData.taskName,
                 "continationCount": taskData.continationCount,
+                "recoveryCount": taskData.recoveryCount,
                 "lastDoneDate": taskData.lastDoneDate,
-                "createDate": taskData.createDate
+                "createDate": taskData.createDate,
+                "taskSection": taskData.taskSection
             ])
         } catch {
             print("Error saving task: \(error)")
@@ -86,8 +88,10 @@ class TaskDataManager: ObservableObject {
                     id: $0.documentID,
                     taskName: $0.data()["taskName"] as? String ?? "",
                     continationCount: $0.data()["continationCount"] as? Int ?? 0,
+                    recoveryCount: $0.data()["recoveryCount"] as? Int ?? 0,
                     lastDoneDate: $0.data()["lastDoneDate"] as? Date ?? Date().zeroclock,
-                    createDate: $0.data()["createDate"] as? Date ?? Date().zeroclock
+                    createDate: $0.data()["createDate"] as? Date ?? Date().zeroclock,
+                    taskSection: $0.data()["taskSection"] as? String ?? ""
                 )
             }
         } catch {

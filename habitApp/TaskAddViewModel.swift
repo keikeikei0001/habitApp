@@ -10,22 +10,32 @@ import SwiftUI
 class TaskAddViewModel: ObservableObject {
     @Published var isTaskAddView: Bool = false
     @Published var inputTaskName = ""
-    
     private let taskDataManager = TaskDataManager()
+    @Published var selectedtaskSection = taskSections.morning
+    
+    enum taskSections: String, CaseIterable, Identifiable {
+        case morning = "朝"
+        case noon = "昼"
+        case nignt = "夜"
+        case free = "フリー"
+        
+        var id: String { rawValue }
+    }
+    
     
     /// 追加ボタンタップ時
     @MainActor
-    func handleAddButtonTap() {
+    func handleAddButtonTap(taskSection: String) {
         Task {
-            await addTask()
+            await addTask(taskSection: taskSection)
             isTaskAddView = false
         }
     }
     
     /// タスク追加処理
-    private func addTask() async {
+    private func addTask(taskSection: String) async {
         // タスク追加処理
-        let _ = await taskDataManager.saveTask(taskName: inputTaskName)
+        let _ = await taskDataManager.saveTask(taskName: inputTaskName, taskSection: taskSection)
     }
 }
 

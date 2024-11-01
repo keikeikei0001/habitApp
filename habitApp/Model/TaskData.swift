@@ -14,8 +14,12 @@ struct TaskData: Identifiable {
     var taskName: String
     /// 継続回数
     var continationCount: Int
+    /// 復帰回数(タスクを3日以上サボった後に二日連続で達成した回数)
+    var recoveryCount: Int
     /// 最終完了日
     var lastDoneDate: Date
     /// 作成日
-    var createDate: Date 
+    var createDate: Date
+    /// タスクセクション
+    var taskSection: String
 }
