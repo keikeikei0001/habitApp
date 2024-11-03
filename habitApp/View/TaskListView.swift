@@ -9,18 +9,11 @@ import SwiftUI
 
 struct TaskListView: View {
     @StateObject private var viewModel = TaskListViewModel()
-    @State private var isTaskSelected = false
-    @State private var selectedTask: TaskData?
     
     var body: some View {
         NavigationStack {
             taskTableView()
                 .onAppear(perform: viewModel.reloadTask)
-                .navigationDestination(isPresented: $isTaskSelected) {
-                    if let taskData = selectedTask {
-                        TaskCountView(viewModel: TaskCountViewModel(taskData: taskData))
-                    }
-                }
                 .overlay(alignment: .bottomTrailing) {
                     FloatingActionButtonView()
                         .padding()
@@ -39,12 +32,13 @@ struct TaskListView: View {
                 Section(header: Text(section)) {
                     if let tasks = viewModel.groupedTaskData[section], !tasks.isEmpty {
                         ForEach(tasks) { taskData in
-                            taskTableCellView(taskData: taskData)
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    selectedTask = taskData
-                                    isTaskSelected = true
+                            ZStack {
+                                taskTableCellView(taskData: taskData) // セルのコンテンツ
+                                NavigationLink(destination: TaskCountView(viewModel: TaskCountViewModel(taskData: taskData))) {
+                                    EmptyView() // 空のラベルで「>」を非表示にする
                                 }
+                                .opacity(0) // 完全に透明にする
+                            }
                         }
                     } else {
                         Text("No Tasks").foregroundColor(.gray)
@@ -61,13 +55,11 @@ struct TaskListView: View {
             Text(taskData.taskName)
             Spacer()
             VStack {
-                Text("継続")
-                    .font(.system(size: 10))
+                Text("継続").font(.system(size: 10))
                 Text("\(taskData.continationCount)")
             }
             VStack {
-                Text("復帰")
-                    .font(.system(size: 10))
+                Text("復帰").font(.system(size: 10))
                 Text("\(taskData.recoveryCount)")
             }
         }
@@ -90,4 +82,5 @@ struct TaskListView: View {
         .frame(width: 66, height: 66)
     }
 }
+
 
