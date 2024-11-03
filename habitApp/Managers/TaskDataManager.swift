@@ -17,7 +17,7 @@ class TaskDataManager: ObservableObject {
         
         let docRef = db.collection("user/\(userId)/taskData").document()
         
-        let taskData = TaskData(id: docRef.documentID, taskName: taskName, continationCount: 0, recoveryCount: 0, lastDoneDate: Date().zeroclock, createDate: Date().zeroclock, taskSection: taskSection)
+        let taskData = TaskData(id: docRef.documentID, taskName: taskName, continationCount: 0, recoveryCount: 0, lastDoneDate: Date().zeroclock, createDate: Date().zeroclock, taskSection: taskSection, isCompleted: false)
         
         // 非同期のsetDataを使用
         do {
@@ -28,7 +28,8 @@ class TaskDataManager: ObservableObject {
                 "recoveryCount": taskData.recoveryCount,
                 "lastDoneDate": taskData.lastDoneDate,
                 "createDate": taskData.createDate,
-                "taskSection": taskData.taskSection
+                "taskSection": taskData.taskSection,
+                "isCompleted": taskData.isCompleted
             ])
         } catch {
             print("Error saving task: \(error)")
@@ -48,7 +49,8 @@ class TaskDataManager: ObservableObject {
         print("🟥\(taskData.continationCount)")
         do {
             try await docRef.updateData([
-                "continationCount": taskData.continationCount
+                "continationCount": taskData.continationCount,
+                "isCompleted": taskData.isCompleted
             ])
         } catch {
             print("Error updating task: \(error)")
@@ -91,7 +93,7 @@ class TaskDataManager: ObservableObject {
                     recoveryCount: $0.data()["recoveryCount"] as? Int ?? 0,
                     lastDoneDate: $0.data()["lastDoneDate"] as? Date ?? Date().zeroclock,
                     createDate: $0.data()["createDate"] as? Date ?? Date().zeroclock,
-                    taskSection: $0.data()["taskSection"] as? String ?? ""
+                    taskSection: $0.data()["taskSection"] as? String ?? "", isCompleted: $0.data()["isCompleted"] as? Bool ?? false
                 )
             }
         } catch {

@@ -37,7 +37,7 @@ struct TaskListView: View {
                                 NavigationLink(destination: TaskCountView(viewModel: TaskCountViewModel(taskData: taskData))) {
                                     EmptyView() // 空のラベルで「>」を非表示にする
                                 }
-                                .opacity(0) // 完全に透明にする
+                                .opacity(0) // 完全に透明に設定
                             }
                         }
                     } else {
@@ -52,6 +52,9 @@ struct TaskListView: View {
     @ViewBuilder
     private func taskTableCellView(taskData: TaskData) -> some View {
         HStack {
+            // チェックボックスを左端に追加
+            Image(systemName: taskData.isCompleted ? "checkmark.square" : "square")
+                .foregroundColor(taskData.isCompleted ? .green : .gray)
             Text(taskData.taskName)
             Spacer()
             VStack {
@@ -82,5 +85,4 @@ struct TaskListView: View {
         .frame(width: 66, height: 66)
     }
 }
-
 

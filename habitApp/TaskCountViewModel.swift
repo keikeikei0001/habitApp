@@ -38,7 +38,7 @@ class TaskCountViewModel: ObservableObject {
     
     /// タスク完了時に1プラスしたタスクを保存する処理
     private func updateContinationCountForFirestore() async {
-        await updateContinationCount()
+        await CompleteTask()
         let _ = await taskDataManager.doneTask(taskData: taskData)
         let characterDataArray = await characterDataManager.fetchCharacter()
         
@@ -53,10 +53,11 @@ class TaskCountViewModel: ObservableObject {
         }
     }
     
-    /// タスク完了時に1プラスする処理
+    /// タスク完了ボタン押下時、継続回数＋１し、完了フラグを立てる
     @MainActor
-    private func updateContinationCount() async {
+    private func CompleteTask() async {
         taskData.continationCount += 1
+        taskData.isCompleted = true
     }
     
     /// タスク削除時の処理

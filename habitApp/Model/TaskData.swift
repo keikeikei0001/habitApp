@@ -22,4 +22,6 @@ struct TaskData: Identifiable {
     var createDate: Date
     /// タスクセクション
     var taskSection: String
+    /// 達成フラグ
+    var isCompleted: Bool
 }
